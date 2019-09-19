@@ -1,0 +1,48 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+        <h2>News create</h2>
+        <%= form_for([:admin,@news]) do |f| %>
+            <div class="form-group">
+                <label>Title</label>
+                <%= f.text_field :title, class: "form-control", autofocus: true %>
+            </div>
+            <div class="form-group">
+                <label>Category</label>
+                <%= f.select :category_id, options_for_select(Category.all.map{|c|[c.name, c.id]}),{}, {class: "form-control"} %>
+            </div>
+            <div class="form-group form-inline">
+                <label>Active status</label>
+                <div class="custom-control custom-switch ml-5">
+                    <%= f.check_box :active, class: "custom-control-input", id: 'activeSwitch'  %>
+                    <label class="custom-control-label" for="activeSwitch"></label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Image</label>
+                <%= f.hidden_field :image_cache %>
+                <%= f.file_field :image, class: "form-control" %>
+            </div>
+            <div class="form-group">
+                <label>Sort content</label>
+                <%= f.text_area :sort_content, class: "form-control" %>
+            </div>
+            <div class="form-group">
+                <label>Content</label>
+                <%= f.text_area :content, class: "form-control", id: 'editor'  %>
+            </div>
+            <div class="text-right">
+                <button class="btn btn-primary" type="submit">Submit</button>
+            </div>
+        <% end %>
+        </div>
+    </div>
+</div>
+<script>
+    ClassicEditor
+        .create( document.querySelector( '#editor' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+</script>
+    

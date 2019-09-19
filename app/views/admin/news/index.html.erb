@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <a class="btn btn-primary" href="/admin/news/new">Add news</a>
+    </div>
+  </div>
+  <% @news.each do |news| %>
+  <div class="row">
+    <div class="col-12 col-md-3">
+      <%= cl_image_tag(news.image.thumbnail) %>
+    </div>
+    <div class="col-12 col-md-9">
+      <div class="d-flex justify-content-between">
+        <h5><%= news.title %></h5>
+        <a href="/admin/news/<%= news.id %>">Edit</a>
+      </div>
+      <div><%= news.sort_content %></div>
+    </div>
+  </div>
+  <% end %>
+</div>
