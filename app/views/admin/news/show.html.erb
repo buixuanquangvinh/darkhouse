@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container-fluid">
     <div class="row">
         <div class="col-12">
         <h2>News edit</h2>
@@ -8,7 +8,6 @@
                 <label>Title</label>
                 <%= f.text_field :title, class: "form-control", autofocus: true %>
             </div>
-            <%= cl_image_tag(@news.image.thumbnail) %>
             <div class="form-group">
                 <label>Category</label>
                 <%= f.select :category_id, options_for_select(Category.all.map{|c|[c.name, c.id]}),{}, {class: "form-control"} %>
@@ -21,6 +20,15 @@
                 </div>
             </div>
             <div class="form-group">
+                <label>Image</label>
+                <button class="btn mt-1 pl-0" type="button" id="select-image-button"><i class="material-icons">camera_alt</i></button>
+                <div id="image-preview" src="<%=@news.image.thumbnail %>">
+                    <img src="<%=@news.image.thumbnail %>">
+                </div>
+                <%= f.hidden_field :image_cache %>
+                <%= f.file_field :image, class: "form-control d-none", id: 'file-input' %>
+            </div>
+            <div class="form-group">
                 <label>Sort content</label>
                 <%= f.text_area :sort_content, class: "form-control" %>
             </div>
@@ -28,6 +36,20 @@
                 <label>Content</label>
                 <%= f.text_area :content, class: "form-control", id: 'editor'  %>
             </div>
+            <div class="form-group">
+                <label>Photo Gallary</label>
+                <button class="btn mt-1 pl-0" type="button" id="select-photo-button"><i class="material-icons">camera_alt</i></button>   
+                <%= f.file_field :photos, multiple: true, class: "form-control d-none", id: 'photo-input', name: "photos[image][]" %>
+            </div>
+            <div class="d-flex">
+                <div>
+                    <% @news.photos.map do |photo| %>
+                        <img src="<%=photo.image.thumbnail %>"/>
+                    <% end %>
+                </div>
+                <div id="photo-preview"></div>
+            </div>
+            
             <div class="text-right">
                 <button class="btn btn-primary" type="submit">Submit</button>
             </div>
@@ -36,14 +58,45 @@
     </div>
 </div>
 <script>
-    ClassicEditor
-        .create( document.querySelector( '#editor' ),{
-            //ckfinder: {
-            //    uploadUrl: '/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files&responseType=json'
-            //}
-        })
-        .catch( error => {
-            console.error( error );
-        } );
+    $('#select-image-button').on('click',()=>{
+        $('#file-input').click()
+    })
+    $('#file-input').on('change',(e)=>{
+        $('#image-preview').empty()
+        let reader = new FileReader();
+        reader.readAsDataURL(e.target.files[0]);
+        reader.onload = function () {
+            $('#image-preview').append('<img style="height:100px;width:auto" src="'+reader.result+'"/>')
+        };
+        reader.onerror = function (error) {
+            console.log('Error: ', error);
+        };
+    })
+    $('#select-photo-button').on('click',()=>{
+        $('#photo-input').click()
+    })
+    $('#photo-input').on('change',(e)=>{
+        $('#photo-preview').empty()
+        let files = e.target.files
+        for(let i =0; i<files.length;i++){
+            let reader = new FileReader();
+            reader.readAsDataURL(files[i]);
+            reader.onload = function () {
+                $('#photo-preview').append('<img style="height:100px;width:auto" src="'+reader.result+'"/>')
+            };
+            reader.onerror = function (error) {
+                console.log('Error: ', error);
+            };
+        }
+        
+    })
+    ClassicEditor.create( document.querySelector( '#editor' ),{
+        //ckfinder: {
+        //    uploadUrl: '/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files&responseType=json'
+        //}
+    })
+    .catch( error => {
+        console.error( error );
+    } );
 </script>
         

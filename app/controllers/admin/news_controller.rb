@@ -6,11 +6,16 @@ class Admin::NewsController < AdminController
 
     def new
         @news = News.new
-        @news.image = params[:file]
+        @photos = @news.photos.build
     end
 
     def create
-        News.create(news_params)
+        @news = News.create(news_params)
+        if(@news)
+            params[:photos]['image'].each do |a|
+                @photo = @news.photos.create!(:image => a)
+            end
+        end
         redirect_to action: :index
     end
 
@@ -21,6 +26,11 @@ class Admin::NewsController < AdminController
     def update
         @news = News.find(params[:id])
         @news.update_attributes(news_params)
+        if(@news)
+            params[:photos]['image'].each do |a|
+                @photo = @news.photos.create!(:image => a)
+            end
+        end
         redirect_to action: :index
     end
 
@@ -30,7 +40,15 @@ class Admin::NewsController < AdminController
     end
 
     def news_params
-        params.require(:news).permit(:title,:category_id,:sort_content,:content,:active,:image,:image_cache)
+        params.require(:news).permit(
+            :title,
+            :category_id,
+            :sort_content,
+            :content,
+            :active,
+            :image,
+            :image_cache,
+            photos_attributes: [:id, :image, :news_id])
     end
 
 end

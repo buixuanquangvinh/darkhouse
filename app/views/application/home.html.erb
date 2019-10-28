@@ -1,16 +1,11 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>HoBuiBlog</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
-
-  <body>
-    home
-    <%= yield %>
-  </body>
-</html>
+<div class="container">
+  <div class="row">
+  <% @news.each do |news| %>
+    <div class="col-12 col-md-4">
+      <h5><%= news.title %></h5>
+      <%= cl_image_tag(news.image, :transformation => { :width => 400, :crop => "fit" }, :class => "w-100")  %>
+      <div><%= news.sort_content %> <a href="/admin/news/<%= news.id %>">Read more</a></div>
+    </div>
+  <% end %>
+  </div>
+</div>

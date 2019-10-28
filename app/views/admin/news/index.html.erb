@@ -1,21 +1,28 @@
-<div class="container">
+<div class="container-fluid pt-5">
   <div class="row">
     <div class="col-12">
-      <a class="btn btn-primary" href="/admin/news/new">Add news</a>
+      <a href="/admin/news/new"><i class="material-icons text-primary">add_circle</i></a>
     </div>
   </div>
-  <% @news.each do |news| %>
-  <div class="row">
-    <div class="col-12 col-md-3">
-      <%= cl_image_tag(news.image.thumbnail) %>
-    </div>
-    <div class="col-12 col-md-9">
-      <div class="d-flex justify-content-between">
-        <h5><%= news.title %></h5>
-        <a href="/admin/news/<%= news.id %>">Edit</a>
-      </div>
-      <div><%= news.sort_content %></div>
-    </div>
-  </div>
-  <% end %>
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Sort content</th>
+        <th>Status</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @news.each do |news| %>
+      <tr>
+        <!--<td><%= cl_image_tag(news.image.thumbnail) %></td>-->
+        <td><%= news.title %></td>
+        <td><%= news.sort_content %></td>
+        <td><%= news.active ? 'Active':'Inactive' %></td>
+        <td class="text-center" style="width: 1%"><a href="/admin/news/<%= news.id %>"><i class="material-icons">edit</i></a></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
 </div>
