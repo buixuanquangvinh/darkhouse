@@ -7,14 +7,15 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://kit.fontawesome.com/beb5e0fe64.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/flatly/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" ></script>
   </head>
 
   <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
       <a class="navbar-brand" href="#">HoBuiBlog</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -30,6 +31,22 @@
       </div>
     </nav>
     <%= yield %>
-        
+    <footer class="bg-primary">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 col-md-6"></div>
+          <div class="col-12 col-md-6 text-md-right">
+            <span><i class="fab fa-facebook-square fa-2x text-primary"></i></span>
+          </div>
+        </div>
+      </div>
+      <div class="container-fluid bg-info">© 2018 Copyright</div>
+    </footer>
+    <div class="d-inline-block rounded-circle position-fixed" style="bottom:20px;right:20px;">
+      <div class="position-absolute rounded-circle w-100 h-100 ani bg-warning" style="top:0;left:0;"></div>
+      <a class="d-inline-block bg-warning rounded-circle p-3 text-primary position-relative"  href="tel:0936865068">
+        <span><i class="fas fa-phone fa-2x"></i></span>
+      </a>
+    </div>
   </body>
 </html>

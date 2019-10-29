@@ -12,6 +12,8 @@
  *
  *= require_tree .
  *= require_self
+ *= require animate.css
+ 
  */
 
 .auth-container{
@@ -32,11 +34,44 @@
     min-width: 250px;
     max-width: 250px;
     min-height: 100vh;
-    /*background: #7386D5;*/
-    /*color: #fff;*/
     transition: all 0.3s;
 }
 
 #sidebar.active {
     margin-left: -250px;
+}
+
+.home-header{
+    height: 100vh;
+    background: url("header-bg.jpg");
+    background-size: cover;
+}
+
+.ani{
+    -webkit-animation: waves 2s infinite;
+    animation: waves 2s infinite;
+}
+
+@keyframes waves {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(1.5);
+        opacity: 0;
+    }
+}
+
+@-webkit-keyframes waves {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(4);
+        opacity: 0;
+    }
 }
