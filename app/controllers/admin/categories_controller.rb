@@ -9,6 +9,22 @@ class Admin::CategoriesController < AdminController
 
     def create
         Category.create(category_params)
+        redirect_to action: :index
+    end
+
+    def show
+        @category = Category.find(params[:id])
+    end
+    
+    def update
+        @category = Category.find(params[:id])
+        @category.update_attributes(category_params)
+        redirect_to action: :index
+    end
+
+    def destroy
+        @category = Category.find(params[:id]).destroy
+        redirect_to action: :index
     end
 
     def category_params

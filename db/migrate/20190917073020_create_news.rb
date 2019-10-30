@@ -2,6 +2,7 @@ class CreateNews < ActiveRecord::Migration[6.0]
   def change
     create_table :news do |t|
       t.string :title
+      t.string :slug
       t.string :thump
       t.string :image
       t.string :sort_content

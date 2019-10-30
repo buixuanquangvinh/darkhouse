@@ -10,10 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_28_091629) do
+ActiveRecord::Schema.define(version: 2019_10_30_021521) do
+
+  create_table "appointments", force: :cascade do |t|
+    t.string "customer_name"
+    t.string "customer_phone"
+    t.string "customer_email"
+    t.string "description"
+    t.string "status"
+    t.datetime "appointment_time"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
+    t.string "slug"
     t.boolean "active"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -21,6 +33,7 @@ ActiveRecord::Schema.define(version: 2019_10_28_091629) do
 
   create_table "news", force: :cascade do |t|
     t.string "title"
+    t.string "slug"
     t.string "thump"
     t.string "image"
     t.string "sort_content"

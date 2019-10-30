@@ -1,0 +1,21 @@
+<header class="page-header d-flex flex-column justify-content-center">
+    <div class="container text-muted">
+        <h2><i>Welcome To Dark House Studio!</i></h2>
+        <h3>It's Nice To Meet You</h3>
+    </div>
+</header>
+<div class="container mt-2 pb-2" style="min-height:60vh">
+    <h2><%= @news.title %></h2>
+    <div>
+        <%= @news.content.html_safe %>
+    </div>
+    <div class="row">
+        <% @news.photos.map do |photo| %>
+        <div class="col-12 col-md-3 mt-2">
+            <a data-fancybox href="<%= photo.image %>">
+                <img class="border w-100" src="<%= photo.image %>"/>
+            </a>
+        </div>
+        <% end %>
+    </div>
+</div>

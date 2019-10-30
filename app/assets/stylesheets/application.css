@@ -46,7 +46,11 @@
     background: url("header-bg.jpg");
     background-size: cover;
 }
-
+.page-header{
+    height: 40vh;
+    background: url("header-bg.jpg");
+    background-size: cover;
+}
 .ani{
     -webkit-animation: waves 2s infinite;
     animation: waves 2s infinite;

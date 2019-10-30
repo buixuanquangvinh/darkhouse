@@ -1,3 +1,25 @@
-<% @categories.each do |category| %>
-  <%= category.name %>
-<% end %>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+      <a href="/admin/categories/new"><i class="material-icons text-primary">add_circle</i></a>
+    </div>
+  </div>
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Status</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @categories.each do |category| %>
+        <tr>
+          <td><%= category.name %> | <%= category.slug %></td>
+          <td><%= category.active ? 'Active':'Inactive' %></td>
+          <td class="text-center" style="width: 1%"><a href="/admin/categories/<%= category.id %>"><i class="material-icons">edit</i></a></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
