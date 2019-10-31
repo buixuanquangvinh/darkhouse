@@ -1,10 +1,11 @@
-<header class="page-header d-flex flex-column justify-content-end">
+<header class="page-header d-flex flex-column justify-content-end pb-5">
     <div class="container text-muted">
         <h2><i>Dark House Studio</i></h2>
+        <h3><%= @news.category.name %></h3>
     </div>
 </header>
 <div class="container mt-2 pb-2" style="min-height:60vh">
-    <h4><%= @news.title %></h4>
+    <h4><b><%= @news.title %></b></h4>
     <img class="w-100" src="<%= @news.image %>"/>
     <div>
         <%= @news.content.html_safe %>
