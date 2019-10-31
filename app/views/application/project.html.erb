@@ -14,15 +14,15 @@
     </nav>
     <h4><b><%= @news.title %></b></h4>
     <p class="text-muted">Đăng ngày <%= @news.created_at.strftime("%d/%m/%Y") %></p>
-    <img class="w-100" src="<%= @news.image %>"/>
-    <div>
+    <img class="w-100 mb-2" src="<%= @news.image %>"/>
+    <div class="text-justify">
         <%= @news.content.html_safe %>
     </div>
     <div class="row">
         <% @news.photos.map do |photo| %>
         <div class="col-12 col-md-3 mt-2">
             <a data-fancybox href="<%= photo.image %>">
-                <img class="border w-100" src="<%= photo.image %>"/>
+                <img class="border border-success w-100" src="<%= photo.image %>"/>
             </a>
         </div>
         <% end %>
