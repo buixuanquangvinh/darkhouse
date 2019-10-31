@@ -1,6 +1,6 @@
 class News < ApplicationRecord
     mount_uploader :image, MediaUploader
-    has_many :photos
+    has_many :photos, :dependent => :destroy
     belongs_to :category
     accepts_nested_attributes_for :photos
     before_save :to_slug

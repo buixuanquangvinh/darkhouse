@@ -1,6 +1,6 @@
 class Category < ApplicationRecord
     before_save :to_slug
-    has_many :news
+    has_many :news, :dependent => :destroy
     def to_param
         slug
     end
