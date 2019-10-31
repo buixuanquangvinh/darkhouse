@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
 
     def catalog
         @category = Category.find_by_slug(params[:slug])
-        @news = @category.news
+        @news = @category.news.where(active:true)
     end
 
     def project
@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
     end
 
     def set_constants
-        @categories = Category.all
+        @categories = Category.where(active:true)
     end
     
 end
