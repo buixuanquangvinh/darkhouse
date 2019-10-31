@@ -21,10 +21,11 @@ test:
   database: db/test.sqlite3
 
 production:
+  <<: *default
   adapter: postgresql
   pool: 5
   timeout: 5000
   host: localhost
-  username: jhfpwkwisiecug
-  password: d1b858f969c25b417faaac0b7c28d2d4cf557f6dba8ae47bc592fc08cb5077b8
-  database: dcfthj2gosijnk
+  username: pvpjpdrjcaskan
+  password: 13d546545a9fd87117d8c3bc7033820a01988a1f9c332712124df3a4559f1ad4
+  database: ddml2d6f8bbs4j
