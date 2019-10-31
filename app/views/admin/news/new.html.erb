@@ -1,25 +1,25 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-12">
-        <h2>News create</h2>
+        <h2>Bài đăng mới</h2>
         <%= form_for([:admin,@news]) do |f| %>
             <div class="form-group">
-                <label>Title</label>
+                <label>Tên bài đăng</label>
                 <%= f.text_field :title, class: "form-control", autofocus: true %>
             </div>
             <div class="form-group">
-                <label>Category</label>
+                <label>Catalog</label>
                 <%= f.select :category_id, options_for_select(Category.all.map{|c|[c.name, c.id]}),{}, {class: "form-control"} %>
             </div>
             <div class="form-group form-inline">
-                <label>Active status</label>
+                <label>Trạng thái</label>
                 <div class="custom-control custom-switch ml-5">
                     <%= f.check_box :active, class: "custom-control-input", id: 'activeSwitch'  %>
                     <label class="custom-control-label" for="activeSwitch"></label>
                 </div>
             </div>
             <div class="form-group">
-                <label>Image</label>
+                <label>Ảnh bìa</label>
                 <button class="btn mt-1 pl-0" type="button" id="select-image-button"><i class="material-icons">camera_alt</i></button>   
                 <%= f.hidden_field :image_cache %>
                 <%= f.file_field :image, class: "form-control d-none", id: 'file-input' %>
@@ -27,22 +27,22 @@
             </div>
             
             <div class="form-group">
-                <label>Sort content</label>
+                <label>Tóm tắt</label>
                 <%= f.text_area :sort_content, class: "form-control" %>
             </div>
             <div class="form-group">
-                <label>Content</label>
+                <label>Nội dung</label>
                 <%= f.text_area :content, class: "form-control", id: 'editor'  %>
             </div>
             <div class="form-group">
-                <label>Photo Gallary</label>
+                <label>Thư viện ảnh</label>
                 <button class="btn mt-1 pl-0" type="button" id="select-photo-button"><i class="material-icons">camera_alt</i></button>   
                 <%= f.file_field :photos, multiple: true, class: "form-control d-none", id: 'photo-input', name: "photos[image][]" %>
                 <div id="photo-preview"></div>
             </div>
             
             <div class="text-right">
-                <button class="btn btn-primary" type="submit">Submit</button>
+                <button class="btn btn-primary" type="submit">Tạo Bài Đăng</button>
             </div>
         <% end %>
         </div>

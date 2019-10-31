@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get '/project/:slug', to:'application#project'
 
   namespace :admin do
+    root to: "dashboard#index"
     resources :categories, :news
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

@@ -17,20 +17,22 @@
 
   <body>
     <div class="d-flex w-100">
-      <nav id="sidebar" class="bg-dark">
+      <nav id="sidebar" class="bg-white border-right">
         <div class="list-group list-group-flush" id="sidebar-content">
-          <div class="list-group-item bg-transparent" style="height:60px">
-            <h3 class="text-white">DarkHouse Admin</h3>
+          <div class="list-group-item bg-transparent d-flex" style="height:60px">
+            <%=image_tag("logo.jpg", :style => "width:40px;height:40px;") %>
+            <div class="d-flex flex-column justify-content-center"><h3 class="mb-0"><b>DARKHOUSE</b></h3></div>
           </div>
-          <a class="list-group-item list-group-item-action text-white bg-transparent" href="/admin/categories">Category List</a>
-          <a class="list-group-item list-group-item-action text-white bg-transparent" href="/admin/categories/new">Create Category</a>
-          <a class="list-group-item list-group-item-action text-white bg-transparent" href="/admin/news">News List</a>
-          <a class="list-group-item list-group-item-action text-white bg-transparent" href="/admin/news/new">Create News</a>
+          <a class="list-group-item list-group-item-action bg-transparent" href="/admin">Dashboard</a>
+          <a class="list-group-item list-group-item-action bg-transparent" href="/admin/categories">Danh Sách Catalog</a>
+          <a class="list-group-item list-group-item-action bg-transparent" href="/admin/categories/new">Tạo Catalog</a>
+          <a class="list-group-item list-group-item-action bg-transparent" href="/admin/news">Danh Sách Bài Đăng</a>
+          <a class="list-group-item list-group-item-action bg-transparent" href="/admin/news/new">Tạo Bài Đăng</a>
         </div>
       </nav>
       <div class="flex-grow-1 vh-100">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-          <button type="button" id="sidebarCollapse" class="btn">
+          <button type="button" id="sidebarCollapse" class="btn text-white">
             <i class="material-icons">menu</i>
           </button>
         </nav>
