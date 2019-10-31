@@ -1,15 +1,22 @@
 <header class="page-header d-flex flex-column justify-content-end pb-5">
     <div class="container text-muted">
         <h2><i>Dark House Studio Catalog</i></h2>
-        <h3><%= @category.name %></h3>
+        <h3><a><%= @category.name %></a></h3>
     </div>
 </header>
 <div class="container mt-2 pb-2" style="min-height:60vh">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">Home</a></li>
+            <li class="breadcrumb-item active"><%= @category.name %></li>
+        </ol>
+    </nav>
     <% @news.each do |news| %>
         <div class="row mt-2">
             <div class="col-4"><%= cl_image_tag(news.image, :transformation => { :width => 400, :crop => "fit" }, :class => "w-100")  %></div>
             <div class="col-8">
                 <h5><b><%= news.title %></b></h5>
+                <span class="text-muted">Đăng ngày <%= news.updated_at.strftime("%d/%m/%Y") %></span>
                 <div class="lead">
                     <span class="d-none d-md-inline"><%= news.sort_content %></span> <a href="/project/<%= news.slug %>">Read more</a>
                 </div>

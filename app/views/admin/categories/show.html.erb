@@ -1,7 +1,13 @@
 <div class="container-fluid">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/admin/categories">Danh sách catalog</a></li>
+            <li class="breadcrumb-item active">Sửa catalog</li>
+        </ol>
+    </nav>
     <div class="row">
         <div class="col-12">
-        <h2>Update catalog</h2>
+        <h2>Sửa catalog</h2>
         <%= link_to 'Xoá catalog', admin_category_path(@category), method: :delete, data: { confirm: 'Delete this category ?' } %>
         <%= form_for([:admin,@category]) do |f| %>
             <div class="form-group">

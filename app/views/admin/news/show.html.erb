@@ -1,7 +1,13 @@
 <div class="container-fluid">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/admin/news">Danh sách bài đăng</a></li>
+            <li class="breadcrumb-item active">Sửa bài đăng</li>
+        </ol>
+    </nav>
     <div class="row">
         <div class="col-12">
-        <h2>Update bài đăng</h2>
+        <h2>Sửa bài đăng</h2>
         <%= link_to 'Xoá bài đăng', admin_news_path(@news), method: :delete, data: { confirm: 'Delete this news ?' } %>
         <%= form_for([:admin,@news]) do |f| %>
             <div class="form-group">
