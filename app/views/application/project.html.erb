@@ -13,7 +13,7 @@
         </ol>
     </nav>
     <h4><b><%= @news.title %></b></h4>
-    <p class="text-muted">Đăng ngày <%= @news.updated_at.strftime("%d/%m/%Y") %></p>
+    <p class="text-muted">Đăng ngày <%= @news.created_at.strftime("%d/%m/%Y") %></p>
     <img class="w-100" src="<%= @news.image %>"/>
     <div>
         <%= @news.content.html_safe %>
