@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
+  root 'application#home'
   get '/home', to: 'application#home'
   get '/catalog/:slug', to:'application#catalog'
   get '/project/:slug', to:'application#project'
