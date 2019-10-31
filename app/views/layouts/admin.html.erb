@@ -50,6 +50,8 @@
   </body>
   <script>
     $(document).ready(function () {
+      if (window.innerWidth <= 600) 
+        $("#sidebar").addClass('active');
       $('#sidebar-content').children().each((i,el)=>{
         if(window.location.href == el.href){
           el.classList.remove('bg-transparent')
