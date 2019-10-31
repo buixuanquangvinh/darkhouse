@@ -6,7 +6,7 @@ class MediaUploader < CarrierWave::Uploader::Base
   process :tags => ['post_picture']
 
   version :standard do
-    process :resize_to_fill => [100, 150, :north]
+    process :resize_to_fill => [300, 100, :north]
   end
 
   version :thumbnail do

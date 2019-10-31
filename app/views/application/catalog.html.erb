@@ -1,16 +1,15 @@
 <header class="page-header d-flex flex-column justify-content-center">
     <div class="container text-muted">
-        <h1><i>Welcome To Dark House Studio!</i></h1>
-        <h3>It's Nice To Meet You</h3>
+        <h2><i>Dark House Studio Catalog</i></h2>
+        <h3><%= @category.name %></h3>
     </div>
 </header>
 <div class="container mt-2 pb-2" style="min-height:60vh">
-    <h1><%= @category.name %></h1>
     <% @news.each do |news| %>
-        <div class="row">
+        <div class="row mt-2">
             <div class="col-4"><%= cl_image_tag(news.image, :transformation => { :width => 400, :crop => "fit" }, :class => "w-100")  %></div>
             <div class="col-8">
-                <h5><%= news.title %></h5>
+                <h5><b><%= news.title %></b></h5>
                 <div class="lead">
                     <span class="d-none d-md-inline"><%= news.sort_content %></span> <a href="/project/<%= news.slug %>">Read more</a>
                 </div>

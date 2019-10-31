@@ -11,7 +11,7 @@ class Admin::NewsController < AdminController
 
     def create
         @news = News.create(news_params)
-        if(@news)
+        if(@news && params[:photos])
             params[:photos]['image'].each do |a|
                 @photo = @news.photos.create!(:image => a)
             end
