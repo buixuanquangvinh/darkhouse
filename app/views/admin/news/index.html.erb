@@ -9,29 +9,31 @@
       <a href="/admin/news/new"><i class="material-icons text-primary">add_circle</i></a>
     </div>
   </div>
-  <table class="table table-bordered table-striped">
-    <thead>
-      <tr>
-        <th>Tên bài đăng</th>
-        <th>Tóm tắt</th>
-        <th>Trạng thái</th>
-        <th>Đăng bởi</th>
-        <th>Cập nhật bởi</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-    <% @news.each do |news| %>
-      <tr>
-        <!--<td><%= cl_image_tag(news.image.thumbnail) %></td>-->
-        <td><%= news.title %></td>
-        <td><%= news.sort_content %></td>
-        <td><%= news.active ? 'Active':'Inactive' %></td>
-        <td><%= news.created_by_user.email %></td>
-        <td><%= news.updated_by_user.email %></td>
-        <td class="text-center" style="width: 1%"><a href="/admin/news/<%= news.id %>"><i class="material-icons">edit</i></a></td>
-      </tr>
-    <% end %>
-    </tbody>
-  </table>
+  <div class="table-responsive">
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th>Tên bài đăng</th>
+          <th>Tóm tắt</th>
+          <th>Trạng thái</th>
+          <th>Đăng bởi</th>
+          <th>Cập nhật bởi</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+      <% @news.each do |news| %>
+        <tr>
+          <!--<td><%= cl_image_tag(news.image.thumbnail) %></td>-->
+          <td><%= news.title %></td>
+          <td><%= news.sort_content %></td>
+          <td><%= news.active ? 'Active':'Inactive' %></td>
+          <td><%= news.created_by_user.email %></td>
+          <td><%= news.updated_by_user.email %></td>
+          <td class="text-center" style="width: 1%"><a href="/admin/news/<%= news.id %>"><i class="material-icons">edit</i></a></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
 </div>
