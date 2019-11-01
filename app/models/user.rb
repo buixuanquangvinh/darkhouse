@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  mount_uploader :avatar, MediaUploader
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable
   enum role: [:user, :vip, :admin]
   has_many :news_created, :class_name => 'News', foreign_key: :create_by_id

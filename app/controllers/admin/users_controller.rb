@@ -8,26 +8,27 @@ class Admin::UsersController < AdminController
     end
 
     def create
-        Category.create(category_params)
+        User.create(user_params)
         redirect_to action: :index
     end
 
     def show
-        @category = Category.find(params[:id])
+        @user = User.find(params[:id])
     end
     
     def update
-        @category = Category.find(params[:id])
-        @category.update_attributes(category_params)
+        @user = User.find(params[:id])
+        @user.update(user_params)
+        puts @user.avatar
         redirect_to action: :index
     end
 
     def destroy
-        @category = Category.find(params[:id]).destroy
+        @user = User.find(params[:id]).destroy
         redirect_to action: :index
     end
 
     def user_params
-        params.require(:user).permit(:email,:password,:password_confirmation,:role)
+        params.require(:user).permit(:email,:password,:password_confirmation,:role,:avatar)
     end
 end
