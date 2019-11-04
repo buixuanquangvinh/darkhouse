@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users
   root 'application#home'
-  get '/home', to: 'application#home'
+  get '/lien-he', to: 'application#contact'
+  get '/ve-cong-ty', to: 'application#about'
+  get '/du-an-tieu-bieu', to:'application#highlight'
   get '/catalog/:slug', to:'application#catalog'
   get '/project/:slug', to:'application#project'
 

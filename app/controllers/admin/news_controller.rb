@@ -10,7 +10,7 @@ class Admin::NewsController < AdminController
     end
 
     def create
-        @news = current_user.news.create(news_params)
+        @news = current_user.news_created.create!(news_params)
         if(@news && params[:photos])
             params[:photos]['image'].each do |a|
                 @photo = @news.photos.create!(:image => a)
@@ -25,7 +25,7 @@ class Admin::NewsController < AdminController
     
     def update
         @news = News.find(params[:id])
-        @news.update_attributes(news_params)
+        @news.update(news_params)
         @news.update(updated_by_id: current_user.id)
         if(@news && params[:photos])
             params[:photos]['image'].each do |a|
@@ -47,6 +47,7 @@ class Admin::NewsController < AdminController
             :sort_content,
             :content,
             :active,
+            :highlight,
             :image,
             :image_cache,
             photos_attributes: [:id, :image, :news_id])

@@ -27,7 +27,7 @@
 }
 
 .ck-editor__editable_inline {
-    min-height: 500px !important;
+    min-height: 300px !important;
 }
 
 #sidebar {
@@ -84,4 +84,14 @@
     #sidebar {
        position: absolute;
     }
+}
+
+a {
+    text-decoration:none !important;
+}
+
+.card-img-top {
+    height: 10vw;
+    object-fit: cover;
+    object-position: top;
 }

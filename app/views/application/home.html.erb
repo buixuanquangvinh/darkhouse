@@ -1,54 +1,59 @@
-<header class="home-header d-flex flex-column justify-content-center animated fadeIn">
+<header class="home-header d-flex flex-column justify-content-center animated fadeIn position-relative">
   <div class="container text-center text-muted animated slideInLeft delay-1s">
     <h1><i>Welcome To Dark House Studio!</i></h1>
     <h3>It's Nice To Meet You</h3>
-    <a class="btn btn-outline-warning btn-lg" href="/admin">Tell Me More</a>
+    <a class="btn btn-outline-warning btn-lg" href="/contact">Tell Me More</a>
+  </div>
+  <div class="multiple-items bg-warning position-absolute w-100" style="bottom:0px;opacity: 0.5;">
+    <% @categories.each do |category| %>
+      <a href="/catalog/<%= category.slug %>">
+        <div class="p-3 text-center text-white">
+          <%= category.name %>
+        </div>
+      </a>
+    <% end %>
   </div>
 </header>
-<div class="container pb-3">
-  <div class="text-center mt-5 mb-5">
-    <h1>About us</h1>
-  </div>
+<div class="container pt-3 pb-3">
   <div class="row">
-    <div class="col-12 col-md-7">
-      <h2>First featurette heading. <span class="text-muted">It’ll blow your mind.</span></h2>
-      <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-    </div>
-    <div class="col-12 col-md-5">
-      <img class="w-100" src="http://www.kangraconstruction.com/images/website/889739Life-Coach-Insights-Life-Architect-753x570-HG-325469.jpg"/>
-    </div>
-  </div>
-  <hr class="mt-5 mb-5">
-  <div class="row">
-    <div class="col-12 col-md-5">
-      <img class="w-100" src="http://images.jdmagicbox.com/def_content/architects/default-architects-0.jpg"/>
-    </div>
-    <div class="col-12 col-md-7 order-first order-md-last">
-      <h2>Oh yeah, it’s that good. <span class="text-muted">See for yourself.</span></h2>
-      <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-    </div>
-  </div>
-  <hr class="mt-5 mb-5">
-  <div class="row">
-    <div class="col-12 col-md-7">
-      <h2>And lastly, this one. <span class="text-muted">Checkmate.</span></h2>
-      <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-    </div>
-    <div class="col-12 col-md-5">
-      <img class="w-100" src="https://www.renmarkhomes.com.au/wp-content/uploads/Fotolia_44178156_S.jpg"/>
-    </div>
-  </div>
-</div>
-<!--
-<div class="container">
-  <div class="row">
-  <% @news.each do |news| %>
-    <div class="col-12 col-md-4">
-      <h5><%= news.title %></h5>
-      <%= cl_image_tag(news.image, :transformation => { :width => 400, :crop => "fit" }, :class => "w-100")  %>
-      <div><%= news.sort_content %> <a href="/admin/news/<%= news.id %>">Read more</a></div>
+  <% @categories.each do |category| %>
+    <div class="col-12 col-md-4 mt-3">
+      <div class="card h-100">
+        <%= cl_image_tag(category.image, :transformation => { :width => 400, :crop => "fit" }, :class => "card-img-top")  %>
+        <div class="card-body">
+          <h5 class="card-title"><%= category.name %></h5>
+          <p class="card-text"><%= category.description %></p>
+          <a href="/catalog/<%= category.slug %>" class="card-link">Read more</a>
+        </div>
+      </div>
     </div>
   <% end %>
   </div>
 </div>
--->
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-6"></div>
+    <div class="col-6"></div>
+  </div>
+</div>
+<script>
+  $('.multiple-items').slick({
+    infinite: true,
+    slidesToShow: 4,
+    slidesToScroll: 4,
+    arrows:false,
+    responsive: [{
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 2
+      }
+    }]
+  });
+  $('.multiple-project').slick({
+    infinite: true,
+    slidesToShow: 1,
+    slidesToScroll: 1
+  });
+</script>

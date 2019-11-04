@@ -14,10 +14,9 @@
       <thead>
         <tr>
           <th>Tên bài đăng</th>
-          <th>Tóm tắt</th>
-          <th>Trạng thái</th>
           <th>Đăng bởi</th>
           <th>Cập nhật bởi</th>
+          <th>Trạng thái</th>
           <th></th>
         </tr>
       </thead>
@@ -26,10 +25,9 @@
         <tr>
           <!--<td><%= cl_image_tag(news.image.thumbnail) %></td>-->
           <td><%= news.title %></td>
-          <td><%= news.sort_content %></td>
-          <td><%= news.active ? 'Active':'Inactive' %></td>
           <td><%= news.created_by_user.email %></td>
-          <td><%= news.updated_by_user.email %></td>
+          <td><%= news.updated_by_user ? news.updated_by_user.email : '' %></td>
+          <td><%= news.active ? 'Active':'Inactive' %></td>
           <td class="text-center" style="width: 1%"><a href="/admin/news/<%= news.id %>"><i class="material-icons">edit</i></a></td>
         </tr>
       <% end %>

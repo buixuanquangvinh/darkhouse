@@ -8,6 +8,7 @@ class CreateNews < ActiveRecord::Migration[6.0]
       t.string :sort_content
       t.string :content
       t.boolean :active
+      t.boolean :highlight
       t.belongs_to :category, index: true
       t.belongs_to :create_by
       t.belongs_to :updated_by

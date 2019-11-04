@@ -1,4 +1,5 @@
 class Category < ApplicationRecord
+    mount_uploader :image, MediaUploader
     before_save :to_slug
     has_many :news, :dependent => :destroy
 

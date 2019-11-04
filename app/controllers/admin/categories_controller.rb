@@ -28,6 +28,6 @@ class Admin::CategoriesController < AdminController
     end
 
     def category_params
-        params.require(:category).permit(:name,:active)
+        params.require(:category).permit(:name,:active,:description,:image,:image_cache)
     end
 end

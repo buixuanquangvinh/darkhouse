@@ -24,10 +24,17 @@
                     <label class="custom-control-label" for="activeSwitch"></label>
                 </div>
             </div>
+            <div class="form-group form-inline">
+                <label>Hiển thị trên trang chủ</label>
+                <div class="custom-control custom-switch ml-5">
+                    <%= f.check_box :highlight, class: "custom-control-input", id: 'highlightSwitch'  %>
+                    <label class="custom-control-label" for="highlight"></label>
+                </div>
+            </div>
             <div class="form-group">
                 <label>Ảnh bìa</label>
                 <button class="btn mt-1 pl-0" type="button" id="select-image-button"><i class="material-icons">camera_alt</i></button>
-                <div id="image-preview" src="<%=@news.image.thumbnail %>">
+                <div id="image-preview">
                     <img src="<%=@news.image.thumbnail %>">
                 </div>
                 <%= f.hidden_field :image_cache %>

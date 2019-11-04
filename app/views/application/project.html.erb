@@ -1,17 +1,16 @@
-<header class="page-header d-flex flex-column justify-content-end pb-5">
+<header class="page-header d-flex flex-column justify-content-end">
     <div class="container text-muted">
         <h2><i>Dark House Studio</i></h2>
-        <h3><%= @news.category.name %></h3>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb bg-transparent">
+                <li class="breadcrumb-item"><a href="/">Trang chủ</a></li>
+                <li class="breadcrumb-item"><a href="/catalog/<%= @news.category.slug %>"><%= @news.category.name %></a></li>
+                <li class="breadcrumb-item active">dự án</li>
+            </ol>
+        </nav>
     </div>
 </header>
 <div class="container mt-2 pb-2" style="min-height:60vh">
-    <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="/">Home</a></li>
-            <li class="breadcrumb-item"><a href="/catalog/<%= @news.category.slug %>"><%= @news.category.name %></a></li>
-            <li class="breadcrumb-item active">project</li>
-        </ol>
-    </nav>
     <h4><b><%= @news.title %></b></h4>
     <p class="text-muted">Đăng ngày <%= @news.created_at.strftime("%d/%m/%Y") %></p>
     <img class="w-100 mb-2" src="<%= @news.image %>"/>

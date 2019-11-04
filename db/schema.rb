@@ -25,6 +25,8 @@ ActiveRecord::Schema.define(version: 2019_11_01_075109) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
+    t.string "description"
+    t.string "image"
     t.string "slug"
     t.boolean "active"
     t.datetime "created_at", precision: 6, null: false
@@ -39,6 +41,7 @@ ActiveRecord::Schema.define(version: 2019_11_01_075109) do
     t.string "sort_content"
     t.string "content"
     t.boolean "active"
+    t.boolean "highlight"
     t.integer "category_id"
     t.integer "create_by_id"
     t.integer "updated_by_id"
