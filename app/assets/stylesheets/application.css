@@ -91,7 +91,7 @@ a {
 }
 
 .card-img-top {
-    height: 10vw;
+    height: 100px;
     object-fit: cover;
     object-position: top;
 }
