@@ -36,7 +36,7 @@
   <% @news.each do |news| %>
     <div class="d-flex">
       <div class="overflow-hidden" style="width:60%;clip-path: polygon(0 0,0% 400%,100% 0);-webkit-clip-path:polygon(0 0,0% 400%,100% 0)">
-        <%= cl_image_tag(news.image, :transformation => { :width => 1000, :crop => "fit" }, :class => "highlight-news-image w-100")  %>
+        <%= cl_image_tag(news.image, :transformation => { :width => 1000, :height=> 600, :crop => "fit" }, :class => "highlight-news-image w-100")  %>
       </div>
       <div class="p-3 d-flex flex-column justify-content-center" style="width:40%">
         <h2><b><span class="text-warning">DỰ ÁN</span> TIÊU BIỂU</b></h2>
