@@ -102,5 +102,6 @@ a {
 
 .highlight-news-image{
     object-fit: cover;
-    height:500px;
+    height:600px;
+    object-position: top;
 }
