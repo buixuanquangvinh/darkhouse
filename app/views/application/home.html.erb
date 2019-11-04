@@ -18,14 +18,15 @@
   <div class="row">
   <% @categories.each do |category| %>
     <div class="col-12 col-md-4 mt-3">
+      <a href="/catalog/<%= category.slug %>">
       <div class="card h-100">
         <%= cl_image_tag(category.image, :transformation => { :width => 400, :crop => "fit" }, :class => "card-img-top")  %>
         <div class="card-body">
           <h5 class="card-title"><%= category.name %></h5>
           <p class="card-text"><%= category.description %></p>
-          <a href="/catalog/<%= category.slug %>" class="card-link">Read more</a>
         </div>
       </div>
+      </a>
     </div>
   <% end %>
   </div>

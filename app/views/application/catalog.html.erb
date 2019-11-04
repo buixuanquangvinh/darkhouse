@@ -19,7 +19,9 @@
                     <h5 class="card-title"><%= news.title %></h5>
                     <span class="text-muted">Đăng ngày <%= news.created_at.strftime("%d/%m/%Y") %></span>
                     <p class="card-text"><%= news.sort_content %></p>
-                    <a href="/project/<%= news.slug %>" class="btn btn-primary">Read more</a>
+                    <div class="text-right">
+                        <a href="/project/<%= news.slug %>" class="btn btn-primary">Chi tiết</a>
+                    </div>
                 </div>
             </div>
         </div>
