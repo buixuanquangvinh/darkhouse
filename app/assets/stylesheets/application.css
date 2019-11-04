@@ -99,3 +99,7 @@ a {
     object-fit: cover;
     object-position: top;
 }
+
+.highlight-news-image{
+    object-fit: cover
+}

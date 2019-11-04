@@ -18,7 +18,7 @@
                 <div class="card-body">
                     <h5 class="card-title"><%= news.title %></h5>
                     <span class="text-muted">Đăng ngày <%= news.created_at.strftime("%d/%m/%Y") %></span>
-                    <p class="card-text"><%= news.sort_content %></p>
+                    <p class="card-text text-justify"><%= news.sort_content %></p>
                     <div class="text-right">
                         <a href="/project/<%= news.slug %>" class="btn btn-primary">Chi tiết</a>
                     </div>

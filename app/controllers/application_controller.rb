@@ -1,7 +1,8 @@
 class ApplicationController < ActionController::Base
     before_action :set_constants
+
     def home
-        @news = News.all
+        @news = News.where(active:true).where(highlight:true)
     end
 
     def contact

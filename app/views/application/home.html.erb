@@ -17,7 +17,7 @@
 <div class="container pt-3 pb-3">
   <div class="row">
   <% @categories.each do |category| %>
-    <div class="col-12 col-md-4 mt-3">
+    <div class="col-12 col-md-6 col-lg-4 mt-3">
       <a href="/catalog/<%= category.slug %>">
       <div class="card h-100">
         <%= cl_image_tag(category.image, :transformation => { :width => 400, :crop => "fit" }, :class => "card-img-top")  %>
@@ -32,12 +32,24 @@
   </div>
 </div>
 
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-6"></div>
-    <div class="col-6"></div>
-  </div>
+<div class="multiple-project w-100">
+  <% @news.each do |news| %>
+    <div class="d-flex">
+      <div class="overflow-hidden" style="width:60%;clip-path: polygon(0 0,0% 400%,100% 0)">
+        <%= cl_image_tag(news.image, :transformation => { :width => 1000, :crop => "fit" }, :class => "highlight-news-image")  %>
+      </div>
+      <div class="p-3 d-flex flex-column justify-content-center" style="width:40%">
+        <h2><b><span class="text-warning">DỰ ÁN</span> TIÊU BIỂU</b></h2>
+        <h3><b><%= news.title %></b></h3>
+        <p class="text-justify"><%= news.sort_content %></p>
+        <div class="text-right">
+          <a href="/project/<%= news.slug %>" class="card-link text-primary">Chi tiết</a>
+        </div>
+      </div>
+    </div>
+  <% end %>
 </div>
+
 <script>
   $('.multiple-items').slick({
     infinite: true,
