@@ -101,5 +101,6 @@ a {
 }
 
 .highlight-news-image{
-    object-fit: cover
+    object-fit: cover;
+    height:500px;
 }
