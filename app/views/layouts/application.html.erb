@@ -79,7 +79,7 @@
           <span><i class="fas fa-phone fa-2x animated pulse infinite"></i></span>
         </a>
       </div>
-      <div class="position-relative mt-4">
+      <div class="position-relative mt-4 d-none" id="top-button" style="cursor: pointer;">
         <div class="position-absolute rounded-circle w-100 h-100 ani bg-danger" style="top:0;left:0;"></div>
         <a class="d-inline-block bg-danger rounded-circle p-3 text-dark position-relative text-center" style="width:60px;height:60px">
           <span><i class="fas fa-angle-double-up fa-2x animated pulse infinite"></i></span>
@@ -87,5 +87,27 @@
       </div>
     </div>
   </body>
+  <script>
+    window.onscroll = function() {scrollFunction()};
+    function scrollFunction() {
+      if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+        $("#top-button").addClass('d-block');
+        $("#top-button").removeClass('d-none');
+      } else {
+        $("#top-button").addClass('d-none');
+        $("#top-button").removeClass('d-block');
+      }
+    }
+
+    function topFunction() {
+      document.body.scrollTop = 0; // For Safari
+      document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+    } 
+
+    $('#top-button').on('click',()=>{
+      topFunction()
+    })
+
+  </script>
 </html>
 
