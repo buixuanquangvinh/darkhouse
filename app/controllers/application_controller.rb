@@ -27,7 +27,8 @@ class ApplicationController < ActionController::Base
 
     def upload_image
         @photo = Photo.new
-        @photo.image = params[:image]
+        @photo.news_id = params[:news_id]
+        @photo.image = params[:upload]
         @photo.save!
         @re_photo = Photo.find(@photo.id)
         msg = { 

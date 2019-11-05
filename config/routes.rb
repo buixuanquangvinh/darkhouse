@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get '/du-an-tieu-bieu', to:'application#highlight'
   get '/catalog/:slug', to:'application#catalog'
   get '/project/:slug', to:'application#project'
-  post '/upload-image', to:'application#upload_image'
+  post '/upload-image/:news_id', to:'application#upload_image'
 
   namespace :admin do
     root to: "dashboard#index"
