@@ -4,29 +4,27 @@
         <li class="breadcrumb-item active">Danh sách catalog</li>
       </ol>
   </nav>
-  <div class="row">
-    <div class="col-12">
-      <a href="/admin/categories/new"><i class="material-icons text-primary">add_circle</i></a>
-    </div>
-  </div>
-  <table class="table table-responsive w-100 table-bordered table-striped">
-    <thead>
-      <tr>
-        <th>Tên</th>
-        <th>Trạng thái</th>
-        <th># bài</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @categories.each do |category| %>
+  <a href="/admin/categories/new"><i class="material-icons text-primary">add_circle</i></a>
+  <div class="table-responsive">
+    <table class="table table-bordered table-striped">
+      <thead>
         <tr>
-          <td><%= category.name %></td>
-          <td><%= category.active ? 'Active':'Inactive' %></td>
-          <td class="text-center" style="width: 5%"><%= category.news.count %></td>
-          <td class="text-center" style="width: 1%"><a href="/admin/categories/<%= category.id %>"><i class="material-icons">edit</i></a></td>
+          <th>Tên</th>
+          <th>Trạng thái</th>
+          <th># bài</th>
+          <th></th>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+        <% @categories.each do |category| %>
+          <tr>
+            <td><%= category.name %></td>
+            <td><%= category.active ? 'Active':'Inactive' %></td>
+            <td class="text-center" style="width: 5%"><%= category.news.count %></td>
+            <td class="text-center" style="width: 1%"><a href="/admin/categories/<%= category.id %>"><i class="material-icons">edit</i></a></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 </div>

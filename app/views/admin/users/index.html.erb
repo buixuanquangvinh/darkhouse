@@ -4,32 +4,30 @@
           <li class="breadcrumb-item active">Danh sách người dùng</li>
         </ol>
     </nav>
-    <div class="row">
-      <div class="col-12">
-        <a href="/admin/users/new"><i class="material-icons text-primary">add_circle</i></a>
-      </div>
-    </div>
-    <table class="table table-responsive w-100 table-bordered table-striped">
-      <thead>
-        <tr>
-          <th>Email</th>
-          <th>Role</th>
-          <th>Trạng thái</th>
-          <th># bài</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @users.each do |user| %>
+    <a href="/admin/users/new"><i class="material-icons text-primary">add_circle</i></a>
+    <div class="table-responsive">
+      <table class="table table-bordered table-striped">
+        <thead>
           <tr>
-            <td><%= user.email %></td>
-            <td><%= user.role %></td>
-            <td><%= user.active ? 'Active':'Inactive' %></td>
-            <td class="text-center" style="width: 5%"><%= user.news_created.count %></td>
-            <td class="text-center" style="width: 1%"><a href="/admin/users/<%= user.id %>"><i class="material-icons">edit</i></a></td>
+            <th>Email</th>
+            <th>Role</th>
+            <th>Trạng thái</th>
+            <th># bài</th>
+            <th></th>
           </tr>
-        <% end %>
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          <% @users.each do |user| %>
+            <tr>
+              <td><%= user.email %></td>
+              <td><%= user.role %></td>
+              <td><%= user.active ? 'Active':'Inactive' %></td>
+              <td class="text-center" style="width: 5%"><%= user.news_created.count %></td>
+              <td class="text-center" style="width: 1%"><a href="/admin/users/<%= user.id %>"><i class="material-icons">edit</i></a></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
 </div>
   
