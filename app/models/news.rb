@@ -7,8 +7,12 @@ class News < ApplicationRecord
     accepts_nested_attributes_for :photos
 
     before_save :to_slug
-    def to_slug
+    private def to_slug
         self.slug = title.parameterize.truncate(80, omission: "")
     end
     
+    before_destroy :delete_remote_file, prepend: true
+    private def delete_remote_file
+        self.image.file.delete
+    end
 end
