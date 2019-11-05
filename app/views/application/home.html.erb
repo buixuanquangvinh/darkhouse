@@ -39,9 +39,13 @@
         <%= cl_image_tag(news.image, :transformation => { :width => 1000, :crop => "fit" }, :class => "highlight-news-image w-100")  %>
       </div>
       <div class="p-3 d-flex flex-column justify-content-center" style="width:40%">
-        <h2><b><span class="text-warning">DỰ ÁN</span> TIÊU BIỂU</b></h2>
-        <h3><b><%= news.title %></b></h3>
-        <p class="text-justify"><%= news.sort_content %></p>
+        <h2 class="d-none d-md-block"><b><span class="text-warning">DỰ ÁN</span> TIÊU BIỂU</b></h2>
+        <h3 class="d-none d-md-block"><b><%= news.title %></b></h3>
+
+        <h4 class="d-block d-md-none"><b><span class="text-warning">DỰ ÁN</span> TIÊU BIỂU</b></h4>
+        <h5 class="d-block d-md-none"><b><%= news.title %></b></h5>
+
+        <p class="d-none d-md-block text-justify"><%= news.sort_content %></p>
         <div class="text-right">
           <a href="/project/<%= news.slug %>" class="card-link text-primary">Chi tiết</a>
         </div>
