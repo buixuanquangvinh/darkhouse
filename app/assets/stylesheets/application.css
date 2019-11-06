@@ -29,10 +29,6 @@ html {
     background: rgba(0,0,0,0.5)
 }
 
-.ck-editor__editable_inline {
-    min-height: 300px !important;
-}
-
 #sidebar {
     min-width: 250px;
     max-width: 250px;
