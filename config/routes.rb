@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root to: "dashboard#index"
-    resources :categories, :news, :users
+    resources :categories, :news, :users, :abouts
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

@@ -3,17 +3,21 @@ class ApplicationController < ActionController::Base
     before_action :set_constants
 
     def home
-        @news = News.where(active:true).where(highlight:true)
+        @news = News.where(active:true).where(highlight:true).limit(5)
     end
 
     def contact
     end
     
     def about
-        @photos = Photo.all
+        @about = About.first
+        if(!@about)
+            @about = About.new
+        end
     end
 
     def highlight
+        @news = News.where(active:true).where(highlight:true)
     end
     
     def catalog

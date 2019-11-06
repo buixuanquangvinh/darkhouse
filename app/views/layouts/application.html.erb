@@ -36,7 +36,7 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse justify-content-end" id="navbarText">
-        <ul class="navbar-nav">
+        <ul class="navbar-nav" id="navbar-menu">
           <li class="nav-item"><a class="nav-link" href="/">TRANG CHỦ</a></li>
           <li class="nav-item"><a class="nav-link" href="/ve-cong-ty">VỀ CÔNG TY</a></li>
           <li class="nav-item"><a class="nav-link" href="/du-an-tieu-bieu">DỰ ÁN TIÊU BIỂU</a></li>
@@ -88,26 +88,33 @@
     </div>
   </body>
   <script>
-    window.onscroll = function() {scrollFunction()};
-    function scrollFunction() {
-      if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
-        $("#top-button").addClass('d-block');
-        $("#top-button").removeClass('d-none');
-      } else {
-        $("#top-button").addClass('d-none');
-        $("#top-button").removeClass('d-block');
+    $(document).ready(function () {
+      window.onscroll = function() {scrollFunction()};
+      function scrollFunction() {
+        if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+          $("#top-button").addClass('d-block');
+          $("#top-button").removeClass('d-none');
+        } else {
+          $("#top-button").addClass('d-none');
+          $("#top-button").removeClass('d-block');
+        }
       }
-    }
 
-    function topFunction() {
-      document.body.scrollTop = 0; // For Safari
-      document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
-    } 
+      function topFunction() {
+        document.body.scrollTop = 0; // For Safari
+        document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+      } 
 
-    $('#top-button').on('click',()=>{
-      topFunction()
+      $('#top-button').on('click',()=>{
+        topFunction()
+      })
+      
+      $('#navbar-menu').children().each((i,el)=>{
+        if(window.location.href == el.firstChild.href){
+          el.classList.add('active')
+        }
+      })
     })
-
   </script>
 </html>
 

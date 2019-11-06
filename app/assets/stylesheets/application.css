@@ -53,6 +53,7 @@ html {
     height: 40vh;
     background: url("header-bg.jpg");
     background-size: cover;
+    background-repeat: no-repeat;
 }
 .ani{
     -webkit-animation: waves 2s infinite;

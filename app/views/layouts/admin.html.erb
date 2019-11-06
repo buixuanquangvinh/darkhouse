@@ -22,7 +22,7 @@
     <div class="d-flex">
       <nav id="sidebar" class="bg-white border-right overflow-auto vh-100" style="z-index:1">
         <div class="list-group list-group-flush" id="sidebar-content">
-          <div class="list-group-item bg-transparent d-flex" style="height:55px">
+          <div class="list-group-item d-flex" style="height:55px">
             <%=image_tag("logo.jpg", :style => "width:35px;height:35px;") %>
             <div class="d-flex flex-column justify-content-center"><a href="/" style="color: black;text-decoration: none;"><h3 class="mb-0"><b>DARKHOUSE</b></h3></a></div>
             <div class="d-flex flex-column justify-content-center d-md-none">
@@ -31,7 +31,7 @@
               </button>
             </div>
           </div>
-          <div class="list-group-item bg-transparent ">
+          <div class="list-group-item">
             <div class="p-3 p-md-4">
               <div class="rounded-circle w-100 overflow-hidden border-secondary" style="cursor: pointer;border:solid 5px">
                 <% if current_user.avatar? %>
@@ -45,13 +45,22 @@
               <%= current_user.email %>
             </div>
           </div>
-          <a class="list-group-item list-group-item-action bg-transparent" href="/admin">Dashboard</a>
-          <a class="list-group-item list-group-item-action bg-transparent" href="/admin/categories">Danh Sách Catalog</a>
-          <a class="list-group-item list-group-item-action bg-transparent" href="/admin/categories/new">Tạo Catalog</a>
-          <a class="list-group-item list-group-item-action bg-transparent" href="/admin/news">Danh Sách Bài Đăng</a>
-          <a class="list-group-item list-group-item-action bg-transparent" href="/admin/news/new">Tạo Bài Đăng</a>
-          <a class="list-group-item list-group-item-action bg-transparent" href="/admin/users">Danh sách người dùng</a>
-          <a class="list-group-item list-group-item-action bg-transparent" href="/admin/users/new">Tạo người dùng</a>
+          <a class="list-group-item list-group-item-action" href="/admin"><span><i class="fas fa-meteor fa-lg" style="width:30px;"></i></span> Dashboard</a>
+          <a class="list-group-item list-group-item-action" data-toggle="collapse" href="#categories_menu"><span><i class="fas fa-object-group fa-lg" style="width:30px;"></i></span> Quản Lý Catalog</a>
+          <div class="collapse bg-secondary" id="categories_menu">
+            <a class="list-group-item list-group-item-action bg-transparent text-white pl-5" href="/admin/categories"><i class="fas fa-circle fa-xs mr-2"></i> Danh Sách Catalog</a>
+            <a class="list-group-item list-group-item-action bg-transparent text-white pl-5" href="/admin/categories/new"><i class="fas fa-circle fa-xs mr-2"></i> Tạo Catalog</a>
+          </div>
+          <a class="list-group-item list-group-item-action" data-toggle="collapse" href="#news_menu"><span><i class="far fa-newspaper fa-lg" style="width:30px;"></i></span> Quản Lý Bài Đăng</a>
+          <div class="collapse bg-dark" id="news_menu">
+            <a class="list-group-item list-group-item-action bg-transparent text-white pl-5" href="/admin/news"><i class="fas fa-circle fa-xs mr-2"></i> Danh Sách Bài Đăng</a>
+            <a class="list-group-item list-group-item-action bg-transparent text-white pl-5" href="/admin/news/new"><i class="fas fa-circle fa-xs mr-2"></i> Tạo Bài Đăng</a>
+          </div>
+          <a class="list-group-item list-group-item-action" data-toggle="collapse" href="#users_menu"><span><i class="fas fa-users fa-lg" style="width:30px;"></i></span> Quản Lý Người Dùng</a>
+          <div class="collapse bg-dark" id="users_menu">
+            <a class="list-group-item list-group-item-action bg-transparent text-white pl-5" href="/admin/users"><i class="fas fa-circle fa-xs mr-2"></i> Danh sách người dùng</a>
+            <a class="list-group-item list-group-item-action bg-transparent text-white pl-5" href="/admin/users/new"><i class="fas fa-circle fa-xs mr-2"></i> Tạo người dùng</a>
+          </div>
         </div>
       </nav>
       <div class="flex-grow-1 vh-100 vw-100">
@@ -77,20 +86,34 @@
   </body>
   <script>
     $(document).ready(function () {
-      if (window.innerWidth <= 600) 
-        $("#sidebar").addClass('active');
-      $('#sidebar-content').children().each((i,el)=>{
-        if(window.location.href == el.href){
-          el.classList.remove('bg-transparent')
-          el.classList.add('active')
-        }
-      })
       $('#sidebarCollapse').on('click', function () {
           $('#sidebar').toggleClass('active');
       });
+
       $('#sidebarCollapse2').on('click', function () {
           $('#sidebar').toggleClass('active');
       });
+
+      if (window.innerWidth <= 600) 
+        $("#sidebar").addClass('active');
+
+      var menu = ['categories_menu','news_menu','users_menu']
+      $('#sidebar-content').children().each((i,el)=>{
+        if(window.location.href == el.href){
+          el.classList.add('active')
+          el.classList.add('text-white')
+        }
+      })
+      menu.map((id)=>{
+        $('#'+id).children().each((i,el)=>{
+          if(window.location.href == el.href){
+            $('#'+id).prev().click()
+            $('#'+id).prev().addClass('active text-white')
+            el.classList.add('active')
+            el.classList.remove('bg-transparent')
+          }
+        })
+      })
     });
   </script>
 </html>

@@ -3,16 +3,16 @@
         <h2><i>Dark House Studio</i></h2>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb bg-transparent">
-                <li class="breadcrumb-item"><a href="/">Trang chủ</a></li>
+                <li class="breadcrumb-item text-primary"><a href="/">Trang chủ</a></li>
                 <li class="breadcrumb-item active">Về công ty</li>
             </ol>
         </nav>
     </div>
 </header>
 <div class="container mt-2 pb-2" style="min-height:60vh">
-    <% @photos.map do |photo| %>
-        <img class="ml-1 mt-1" style="height:100px;width:auto" src="<%=photo.image.thumbnail %>"/>
-    <% end %>
+    <div class="text-justify">
+        <%= @about.content.html_safe %>
+    </div>
 </div>
         
         
