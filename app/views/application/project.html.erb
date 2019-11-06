@@ -11,7 +11,15 @@
     </div>
 </header>
 <div class="container mt-2 pb-2" style="min-height:60vh">
-    <h4><b><%= @news.title %></b></h4>
+    <div class="d-flex justify-content-between">
+        <h3><b><%= @news.title %></b></h3>
+        <div class="d-flex">
+            <div class="d-flex flex-column justify-content-center mr-1"><b>Share:</b> </div>
+            <span class="mt-1"><i class="fab fa-facebook-square text-primary fa-2x mr-1"></i></span>
+            <span class="mt-1"><i class="fab fa-twitter-square text-primary fa-2x mr-1"></i></span>
+            <span class="mt-1"><i class="fab fa-instagram text-warning fa-2x"></i></span>
+        </div>
+    </div>
     <p class="text-muted">Đăng ngày <%= @news.created_at.strftime("%d/%m/%Y") %></p>
     <img class="w-100 mb-2" src="<%= @news.image %>"/>
     <div class="text-justify">
@@ -25,5 +33,12 @@
             </a>
         </div>
         <% end %>
+    </div>
+    <hr>
+    <div class="d-flex justify-content-end">
+        <div class="d-flex flex-column justify-content-center mr-1"><b>Share:</b> </div>
+        <span><i class="fab fa-facebook-square text-primary fa-2x mr-1"></i></span>
+        <span><i class="fab fa-twitter-square text-primary fa-2x mr-1"></i></span>
+        <span><i class="fab fa-instagram text-warning fa-2x"></i></span>
     </div>
 </div>
