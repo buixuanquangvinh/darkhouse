@@ -12,7 +12,7 @@
 <div class="container mt-2 pb-2" style="min-height:60vh">
     <div class="row">
     <% @news.each do |news| %>
-        <div class="col-12 col-md-4">
+        <div class="col-12 col-md-4 mt-3">
             <div class="card">
                 <%= cl_image_tag(news.image, :transformation => { :width => 600, :crop => "fit" }, :class => "card-img-top")  %>
                 <div class="card-body">
@@ -20,7 +20,7 @@
                     <span class="text-muted">Đăng ngày <%= news.created_at.strftime("%d/%m/%Y") %></span>
                     <p class="card-text text-justify"><%= news.sort_content %></p>
                     <div class="text-right">
-                        <a href="/project/<%= news.slug %>" class="btn btn-primary">Chi tiết</a>
+                        <a href="/project/<%= news.slug %>" class="btn btn-primary text-white">Chi tiết</a>
                     </div>
                 </div>
             </div>
