@@ -4,34 +4,38 @@
     <h3>It's Nice To Meet You</h3>
     <a class="btn btn-outline-warning btn-lg" href="/lien-he">Tell Me More</a>
   </div>
-  <div class="multiple-items bg-warning position-absolute w-100" style="bottom:0px;opacity: 0.5;">
-    <% @categories.each do |category| %>
-      <a href="/catalog/<%= category.slug %>">
-        <div class="p-3 text-center text-white">
-          <%= category.name %>
-        </div>
-      </a>
-    <% end %>
-  </div>
 </header>
 <div class="container pt-3 pb-3">
-  <div class="row">
-  <% @categories.each do |category| %>
-    <div class="col-12 col-md-6 col-lg-4 mt-3">
-      <a href="/catalog/<%= category.slug %>">
-      <div class="card h-100">
-        <%= cl_image_tag(category.image, :transformation => { :width => 600, :crop => "fit" }, :class => "card-img-top")  %>
-        <div class="card-body">
-          <h5 class="card-title"><%= category.name %></h5>
-          <p class="card-text"><%= category.description %></p>
-        </div>
+  <div class="multiple-items bg-dark w-100">
+    <% @categories.each do |category| %>
+      <div class="p-3 text-center text-white">
+        <%= category.name %>
       </div>
-      </a>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
+  <div class="multiple-project mt-3">
+    <% @categories.each do |category| %>
+        <div>
+          <div class="row">
+          <% category.news.where(active:true).where(highlight:true).limit(8).each do |news| %>
+            <div class="col-12 col-md-6 col-lg-4 mt-3">
+              <div class="card text-white">
+                <%= cl_image_tag(news.image, :transformation => { :width => 600, :crop => "fit" }, :class => "card-img",:style => "height:200px")  %>
+                <div class="card-img-overlay p-2" style="top:auto;background: rgba(0,0,0,0.4)">
+                  <h3 class="card-title"><b><%= news.title %></b></h3>
+                </div>
+              </div>
+            </div>
+          <% end %>
+          </div>
+          <div class="text-center mt-3">
+            <a class="btn btn-primary text-white" href="/catalog/<%= category.slug %>">Xem thêm</a>
+          </div>
+        </div>
+    <% end %>
   </div>
 </div>
-
+<!--
 <div class="multiple-project w-100">
   <% @news.each do |news| %>
     <div class="d-flex">
@@ -52,26 +56,29 @@
     </div>
   <% end %>
 </div>
-
+-->
 <script>
   $('.multiple-items').slick({
     infinite: true,
     slidesToShow: 4,
-    slidesToScroll: 4,
+    slidesToScroll: 1,
     arrows:false,
+    asNavFor: '.multiple-project',
+    focusOnSelect: true,
     responsive: [{
       breakpoint: 600,
       settings: {
         slidesToShow: 2,
-        slidesToScroll: 2
+        slidesToScroll: 1
       }
     }]
   });
   $('.multiple-project').slick({
     infinite: true,
-    autoplay: true,
+    //autoplay: true,
     slidesToShow: 1,
     slidesToScroll: 1,
-    arrows:false
+    arrows:false,
+    asNavFor: '.multiple-items',
   });
 </script>
