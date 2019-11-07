@@ -7,14 +7,26 @@ class Admin::AboutsController < AdminController
     end
 
     def create
-        About.create(about_params)
-        redirect_to action: :index
+        begin
+            About.create(about_params)
+            flash[:success] = 'Lưu Thông tin thành công'
+            redirect_to action: :index
+        rescue
+            flash[:error] = ex.message
+            redirect_back fallback_location: root_path
+        end
     end
     
     def update
-        @about = About.find(params[:id])
-        @about.update(about_params)
-        redirect_to action: :index
+        begin
+            @about = About.find(params[:id])
+            @about.update(about_params)
+            flash[:success] = 'Lưu Thông tin thành công'
+            redirect_to action: :index
+        rescue
+            flash[:error] = ex.message
+            redirect_back fallback_location: root_path
+        end
     end
 
     def about_params

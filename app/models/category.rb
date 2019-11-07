@@ -1,4 +1,5 @@
 class Category < ApplicationRecord
+    validates :name,:image, presence: {message: "phải điền"}
     mount_uploader :image, MediaUploader
     has_many :news, :dependent => :destroy
 
@@ -9,7 +10,9 @@ class Category < ApplicationRecord
 
     before_destroy :delete_remote_file, prepend: true
     private def delete_remote_file
-        self.image.file.delete
+        if self.image?
+            self.image.file.delete
+        end
     end
 
 end

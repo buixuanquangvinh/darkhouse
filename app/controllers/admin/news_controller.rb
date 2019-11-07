@@ -10,13 +10,19 @@ class Admin::NewsController < AdminController
     end
 
     def create
-        @news = current_user.news_created.create!(news_params)
-        if(@news && params[:photos])
-            params[:photos]['image'].each do |a|
-                @photo = @news.photos.create!(:image => a)
+        begin
+            @news = current_user.news_created.create!(news_params)
+            if(@news && params[:photos])
+                params[:photos]['image'].each do |a|
+                    @photo = @news.photos.create!(:image => a)
+                end
             end
+            flash[:success] = 'Tạo bài đăng thành công'
+            redirect_to action: :index
+        rescue => ex
+            flash[:error] = ex.message
+            redirect_back fallback_location: root_path
         end
-        redirect_to action: :index
     end
 
     def show
@@ -24,20 +30,32 @@ class Admin::NewsController < AdminController
     end
     
     def update
-        @news = News.find(params[:id])
-        @news.update(news_params)
-        @news.update(updated_by_id: current_user.id)
-        if(@news && params[:photos])
-            params[:photos]['image'].each do |a|
-                @photo = @news.photos.create!(:image => a)
+        begin
+            @news = News.find(params[:id])
+            @news.update(news_params)
+            @news.update(updated_by_id: current_user.id)
+            if(@news && params[:photos])
+                params[:photos]['image'].each do |a|
+                    @photo = @news.photos.create!(:image => a)
+                end
             end
+            flash[:success] = 'Lưu bài đăng thành công'
+            redirect_to action: :index
+        rescue => ex
+            flash[:error] = ex.message
+            redirect_back fallback_location: root_path
         end
-        redirect_to action: :index
     end
 
     def destroy
-        @news = News.find(params[:id]).destroy
-        redirect_to action: :index
+        begin
+            @news = News.find(params[:id]).destroy
+            flash[:success] = 'Xoá bài đăng thành công'
+            redirect_to action: :index
+        rescue => ex
+            flash[:error] = ex.message
+            redirect_back fallback_location: root_path
+        end
     end
 
     def news_params

@@ -8,8 +8,14 @@ class Admin::UsersController < AdminController
     end
 
     def create
-        User.create(user_params)
-        redirect_to action: :index
+        begin
+            User.create(user_params)
+            flash[:success] = 'Tạo người dùng thành công'
+            redirect_to action: :index
+        rescue => ex
+            flash[:error] = ex.message
+            redirect_back fallback_location: root_path
+        end
     end
 
     def show
@@ -17,15 +23,27 @@ class Admin::UsersController < AdminController
     end
     
     def update
-        @user = User.find(params[:id])
-        @user.update(user_params)
-        puts @user.avatar
-        redirect_to action: :index
+        begin
+            @user = User.find(params[:id])
+            @user.update(user_params)
+            puts @user.avatar
+            flash[:success] = 'Lưu người dùng thành công'
+            redirect_to action: :index
+        rescue => ex
+            flash[:error] = ex.message
+            redirect_back fallback_location: root_path
+        end
     end
 
     def destroy
-        @user = User.find(params[:id]).destroy
-        redirect_to action: :index
+        begin
+            @user = User.find(params[:id]).destroy
+            flash[:success] = 'Xoá người dùng thành công'
+            redirect_to action: :index
+        rescue => ex
+            flash[:error] = ex.message
+            redirect_back fallback_location: root_path
+        end
     end
 
     def user_params

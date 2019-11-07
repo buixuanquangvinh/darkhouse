@@ -79,6 +79,20 @@
           </div>
         </nav>
         <div class="overflow-auto pt-5" style="min-height:calc(100vh - 55px)">
+          <div class="container-fluid">
+            <% if flash[:success] %>
+            <div class="alert alert-success alert-dismissible">
+              <button type="button" class="close" data-dismiss="alert">&times;</button>
+              <%= flash[:success] %>
+            </div>
+            <% end %>
+            <% if flash[:error] %>
+            <div class="alert alert-danger alert-dismissible">
+              <button type="button" class="close" data-dismiss="alert">&times;</button>
+              <%= flash[:error] %>
+            </div>
+            <% end %>
+          </div>
           <%= yield %>
           <div class="pb-5"></div>
         </div>

@@ -35,28 +35,18 @@
     <% end %>
   </div>
 </div>
-<!--
-<div class="multiple-project w-100">
+<div class="multiple-comment w-100">
   <% @news.each do |news| %>
     <div class="d-flex">
-      <div class="overflow-hidden" style="width:60%;clip-path: polygon(0 0,0% 400%,100% 0);-webkit-clip-path:polygon(0 0,0% 400%,100% 0)">
+      <div class="overflow-hidden" style="width:50%;clip-path: polygon(0 0,0% 400%,100% 0);-webkit-clip-path:polygon(0 0,0% 400%,100% 0)">
         <%= cl_image_tag(news.image, :transformation => { :width => 1000, :crop => "fit" }, :class => "highlight-news-image w-100")  %>
       </div>
-      <div class="p-3 d-flex flex-column justify-content-center" style="width:40%">
-        <h2 class="d-none d-md-block"><b><span class="text-warning">DỰ ÁN</span> TIÊU BIỂU</b></h2>
-        <h3 class="d-none d-md-block"><b><%= news.title %></b></h3>
-
-        <h5 class="d-block d-md-none"><b><span class="text-warning">DỰ ÁN</span> TIÊU BIỂU</b></h5>
-
-        <p class="d-none d-md-block text-justify"><%= news.sort_content %></p>
-        <div class="text-right">
-          <a href="/project/<%= news.slug %>" class="btn btn-primary text-white">Chi tiết</a>
-        </div>
+      <div class="p-3 d-flex flex-column justify-content-center" style="width:50%">
+          <h3><q><i><b> DỰ ÁN TIÊU BIỂU </b></i></q></h3>
       </div>
     </div>
   <% end %>
 </div>
--->
 <script>
   $('.multiple-items').slick({
     infinite: true,
@@ -75,10 +65,18 @@
   });
   $('.multiple-project').slick({
     infinite: true,
-    //autoplay: true,
+    autoplay: true,
+    speed: 3000,
     slidesToShow: 1,
     slidesToScroll: 1,
     arrows:false,
     asNavFor: '.multiple-items',
+  });
+  $('.multiple-comment').slick({
+    infinite: true,
+    autoplay: true,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    arrows:false,
   });
 </script>
