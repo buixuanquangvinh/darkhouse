@@ -13,17 +13,14 @@
     <div class="row">
     <% @news.each do |news| %>
         <div class="col-12 col-md-4 mt-3">
-            <div class="card h-100">
-                <%= cl_image_tag(news.image, :transformation => { :width => 600, :crop => "fit" }, :class => "card-img-top")  %>
-                <div class="card-body">
-                    <h5 class="card-title"><%= news.title %></h5>
-                    <span class="text-muted">Đăng ngày <%= news.created_at.strftime("%d/%m/%Y") %></span>
-                    <p class="card-text text-justify"><%= news.sort_content %></p>
-                    <div class="text-right">
-                        <a href="/project/<%= news.slug %>" class="btn btn-primary text-white rounded-pill">Chi tiết</a>
+            <a href="/project/<%= news.slug %>">
+                <div class="card text-white">
+                    <%= cl_image_tag(news.image, :transformation => { :width => 600, :crop => "fit" }, :class => "card-img",:style => "height:200px")  %>
+                    <div class="card-img-overlay p-2" style="top:auto;background: rgba(0,0,0,0.4)">
+                        <h3 class="card-title"><b><%= news.title %></b></h3>
                     </div>
                 </div>
-            </div>
+            </a>
         </div>
     <% end %>
     </div>

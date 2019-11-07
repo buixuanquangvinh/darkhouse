@@ -20,7 +20,7 @@
             <span class="mt-1"><i class="fab fa-instagram text-warning fa-2x"></i></span>
         </div>
     </div>
-    <p class="text-muted">Đăng ngày <%= @news.created_at.strftime("%d/%m/%Y") %></p>
+    <!--<p class="text-muted">Đăng ngày <%= @news.created_at.strftime("%d/%m/%Y") %></p>-->
     <img class="w-100 mb-2" src="<%= @news.image %>"/>
     <div class="text-justify">
         <%= @news.content.html_safe %>

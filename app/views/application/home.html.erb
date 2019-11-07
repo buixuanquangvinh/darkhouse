@@ -1,7 +1,7 @@
 <header class="home-header d-flex flex-column justify-content-center animated fadeIn position-relative">
-  <div class="container text-center text-muted animated slideInLeft delay-1s">
-    <h1><b>Dark House Co.Ltd</b></h1>
-    <h3><i>Thiết kế thi công bằng cả trái <span class="text-warning">TIM</span></i></h3>
+  <div class="container text-center text-white animated slideInLeft delay-1s">
+    <h1 style="font-size:50px"><b>Dark House Co.Ltd</b></h1>
+    <h3><b><i>Thiết kế thi công bằng cả trái <span class="text-warning">TIM</span></i></b></h3>
     <a class="btn btn-outline-warning btn-lg" href="/du-an-tieu-bieu">Dự Án Tiêu Biểu</a>
   </div>
 </header>
@@ -20,12 +20,14 @@
           <div class="row">
           <% category.news.where(active:true).where(highlight:true).limit(8).each do |news| %>
             <div class="col-12 col-md-6 col-lg-4 mt-3">
-              <div class="card text-white">
-                <%= cl_image_tag(news.image, :transformation => { :width => 600, :crop => "fit" }, :class => "card-img",:style => "height:200px")  %>
-                <div class="card-img-overlay p-2" style="top:auto;background: rgba(0,0,0,0.4)">
-                  <h3 class="card-title"><b><%= news.title %></b></h3>
+              <a href="/project/<%= news.slug %>">
+                <div class="card text-white">
+                  <%= cl_image_tag(news.image, :transformation => { :width => 600, :crop => "fit" }, :class => "card-img",:style => "height:200px")  %>
+                  <div class="card-img-overlay p-2" style="top:auto;background: rgba(0,0,0,0.4)">
+                    <h3 class="card-title"><b><%= news.title %></b></h3>
+                  </div>
                 </div>
-              </div>
+              </a>
             </div>
           <% end %>
           </div>
