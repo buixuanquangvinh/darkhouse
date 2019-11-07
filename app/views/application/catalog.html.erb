@@ -13,7 +13,7 @@
     <div class="row">
     <% @news.each do |news| %>
         <div class="col-12 col-md-4 mt-3">
-            <div class="card">
+            <div class="card h-100">
                 <%= cl_image_tag(news.image, :transformation => { :width => 600, :crop => "fit" }, :class => "card-img-top")  %>
                 <div class="card-body">
                     <h5 class="card-title"><%= news.title %></h5>
