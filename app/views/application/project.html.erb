@@ -28,7 +28,7 @@
     <div class="row">
         <% @news.photos.map do |photo| %>
         <div class="col-12 col-md-3 mt-2">
-            <a data-fancybox href="<%= photo.image %>">
+            <a data-fancybox="gallery" href="<%= photo.image %>">
                 <%= cl_image_tag(photo.image, :transformation => { :height =>200, :crop => "fit" }, :class => "border border-success w-100", :style => "height:200px;object-fit:cover")  %>
             </a>
         </div>
