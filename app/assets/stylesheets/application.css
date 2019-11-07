@@ -102,3 +102,7 @@ a {
     height:40vw;
     object-position: top;
 }
+
+.home-catalog.slick-current{
+    background: #FF7518
+}
