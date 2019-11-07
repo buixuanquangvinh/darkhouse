@@ -16,6 +16,13 @@ class ApplicationController < ActionController::Base
         end
     end
 
+    def recruitment
+        @recruitment = Recruitment.first
+        if(!@recruitment)
+            @recruitment = Recruitment.new
+        end
+    end
+
     def highlight
         @news = News.where(active:true).where(highlight:true)
     end

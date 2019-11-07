@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root 'application#home'
   get '/lien-he', to: 'application#contact'
   get '/ve-cong-ty', to: 'application#about'
+  get '/tuyen-dung', to: 'application#recruitment'
   get '/du-an-tieu-bieu', to:'application#highlight'
   get '/catalog/:slug', to:'application#catalog'
   get '/project/:slug', to:'application#project'
@@ -10,7 +11,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root to: "dashboard#index"
-    resources :categories, :news, :users, :abouts
+    resources :categories, :news, :users, :abouts, :recruitments
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
