@@ -1,8 +1,8 @@
-<header class="page-header d-flex flex-column justify-content-end">
-    <div class="container text-muted">
+<header class="page-header d-flex flex-column justify-content-end mt-5">
+    <div class="container text-white rounded-top" style="background:rgba(0,0,0,0.6)">
         <h2><i>Dark House Studio</i></h2>
         <nav aria-label="breadcrumb">
-            <ol class="breadcrumb bg-transparent">
+            <ol class="breadcrumb bg-transparent pb-0">
                 <li class="breadcrumb-item text-primary"><a href="/">Trang chủ</a></li>
                 <li class="breadcrumb-item active">Dự án tiêu biểu</li>
             </ol>
@@ -20,7 +20,7 @@
                     <span class="text-muted">Đăng ngày <%= news.created_at.strftime("%d/%m/%Y") %></span>
                     <p class="card-text text-justify"><%= news.sort_content %></p>
                     <div class="text-right">
-                        <a href="/project/<%= news.slug %>" class="btn btn-primary text-white">Chi tiết</a>
+                        <a href="/project/<%= news.slug %>" class="btn btn-primary text-white rounded-pill">Chi tiết</a>
                     </div>
                 </div>
             </div>
