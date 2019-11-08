@@ -23,7 +23,6 @@ class ApplicationController < ActionController::Base
     end
 
     def highlight
-        @news = News.where(active:true).where(highlight:true)
     end
     
     def catalog

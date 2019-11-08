@@ -28,9 +28,9 @@
   </head>
 
   <body>
-    <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-white">
+    <nav class="navbar fixed-top navbar-expand-lg text-white" style="background: rgba(0,0,0,0.8)" >
       <a class="navbar-brand" href="/">
-        <%=image_tag("logo.jpg", :style => "width:35px;height:35px;") %>
+        <%=image_tag("transparent_logo.png", :style => "width:50px;height:50px;") %>
         <b>DarkHouse</b>
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
@@ -40,7 +40,7 @@
         <ul class="navbar-nav" id="navbar-menu">
           <li class="nav-item"><a class="nav-link" href="/">TRANG CHỦ</a></li>
           <li class="nav-item"><a class="nav-link" href="/ve-cong-ty">VỀ CÔNG TY</a></li>
-          <li class="nav-item"><a class="nav-link" href="/du-an-tieu-bieu">DỰ ÁN TIÊU BIỂU</a></li>
+          <li class="nav-item"><a class="nav-link" href="/du-an">CATALOG</a></li>
           <li class="nav-item"><a class="nav-link" href="/tuyen-dung">TUYỂN DỤNG</a></li>
           <li class="nav-item"><a class="nav-link" href="lien-he">LIÊN HỆ</a></li>
         </ul>
@@ -112,7 +112,6 @@
       
       $('#navbar-menu').children().each((i,el)=>{
         if(window.location.href == el.firstChild.href){
-          el.classList.add('text-secondary')
           el.classList.add('font-weight-bold')
         }
       })

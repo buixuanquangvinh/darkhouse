@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get '/lien-he', to: 'application#contact'
   get '/ve-cong-ty', to: 'application#about'
   get '/tuyen-dung', to: 'application#recruitment'
-  get '/du-an-tieu-bieu', to:'application#highlight'
+  get '/du-an', to:'application#highlight'
   get '/catalog/:slug', to:'application#catalog'
   get '/project/:slug', to:'application#project'
   
