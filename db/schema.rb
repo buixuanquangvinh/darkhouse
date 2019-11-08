@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_07_084618) do
+ActiveRecord::Schema.define(version: 2019_11_08_035933) do
 
   create_table "abouts", force: :cascade do |t|
     t.string "content"
@@ -64,6 +64,8 @@ ActiveRecord::Schema.define(version: 2019_11_07_084618) do
     t.integer "news_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "sort"
+    t.integer "image_type"
     t.index ["news_id"], name: "index_photos_on_news_id"
   end
 

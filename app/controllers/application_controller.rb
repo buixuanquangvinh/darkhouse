@@ -1,5 +1,4 @@
 class ApplicationController < ActionController::Base
-    protect_from_forgery with: :null_session
     before_action :set_constants
 
     def home
@@ -34,19 +33,6 @@ class ApplicationController < ActionController::Base
     
     def project
         @news = News.find_by_slug(params[:slug])
-    end
-
-    def upload_image
-        @photo = Photo.new
-        @photo.news_id = params[:news_id]
-        @photo.image = params[:upload]
-        @photo.save!
-        @re_photo = Photo.find(@photo.id)
-        msg = { 
-            :uploaded => 1, 
-            :url => @re_photo.image.url
-        }
-        render :json => msg.to_json
     end
 
     def set_constants

@@ -11,7 +11,7 @@
     </div>
 </header>
 <div class="container mt-2 pb-2" style="min-height:60vh">
-    <div class="d-flex justify-content-between">
+    <div class="d-flex flex-wrap justify-content-between">
         <h3><b><%= @news.title %></b></h3>
         <div class="d-flex">
             <div class="d-flex flex-column justify-content-center mr-1"><b>Share:</b> </div>
@@ -26,7 +26,7 @@
         <%= @news.content.html_safe %>
     </div>
     <div class="row">
-        <% @news.photos.map do |photo| %>
+        <% @news.photos.where(image_type: nil).order(:sort).map do |photo| %>
         <div class="col-12 col-md-3 mt-2">
             <a data-fancybox="gallery" href="<%= photo.image %>">
                 <%= cl_image_tag(photo.image, :transformation => { :height =>200, :crop => "fit" }, :class => "border border-success w-100", :style => "height:200px;object-fit:cover")  %>

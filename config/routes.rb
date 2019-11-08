@@ -7,11 +7,15 @@ Rails.application.routes.draw do
   get '/du-an-tieu-bieu', to:'application#highlight'
   get '/catalog/:slug', to:'application#catalog'
   get '/project/:slug', to:'application#project'
-  post '/upload-image/:news_id', to:'application#upload_image'
+  
+  
+  
 
   namespace :admin do
     root to: "dashboard#index"
-    resources :categories, :news, :users, :abouts, :recruitments
+    post '/upload-image/:news_id', to:'photos#upload_image'
+    post '/sort-image', to:'photos#sort_image'
+    resources :categories, :news, :users, :abouts, :recruitments, :photos
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
