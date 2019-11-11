@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
     before_action :set_constants
 
     def home
-        @news = News.where(active:true).where(highlight:true).limit(5)
+        @customer_comments = CustomerComment.limit(5)
     end
 
     def contact

@@ -39,13 +39,21 @@
   </div>
 </div>
 <div class="multiple-comment w-100">
-  <% @news.each do |news| %>
+  <% @customer_comments.each do |customer_comment| %>
     <div class="d-flex">
-      <div class="overflow-hidden" style="width:50%;clip-path: polygon(0 0,0% 400%,100% 0);-webkit-clip-path:polygon(0 0,0% 400%,100% 0)">
-        <%= cl_image_tag(news.image, :transformation => { :width => 1000, :crop => "fit" }, :class => "highlight-news-image w-100")  %>
+      <div class="overflow-hidden position-relative w-50" style="clip-path: polygon(0 0,0% 400%,100% 0);-webkit-clip-path:polygon(0 0,0% 400%,100% 0)">
+        <%=image_tag("white-brick-bg.jpg", :class => "w-100", :style => "height:300px") %>
+        <div class="position-absolute h-100 w-100 d-flex flex-column justify-content-center" style="top:0;left:0">
+          <div>
+            <%= cl_image_tag(customer_comment.image, :transformation => { :width => 150, :height => 150, :crop => "fit" }, :style => "object-fit:cover;width:150px;height:150px;")  %>
+          </div>
+        </div>
       </div>
-      <div class="p-3 d-flex flex-column justify-content-center" style="width:50%">
-          <h3><q><i><b> DỰ ÁN TIÊU BIỂU </b></i></q></h3>
+      <div class="p-3 d-flex flex-column justify-content-center w-50">
+          <p><q><i><b> <%= customer_comment.quote %> </b></i></q></p>
+          <div class="text-right">
+            <p><i><b> <%= customer_comment.name %> </b></i></p>
+          </div>
       </div>
     </div>
   <% end %>
