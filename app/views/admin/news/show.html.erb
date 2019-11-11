@@ -116,9 +116,7 @@
         extraPlugins: 'uploadimage',
         uploadUrl: '/admin/upload-image/<%=@news.id%>'
     });
-
-    let sort_target = document.getElementById('sortable-images')
-    var sort_data = new Sortable(sort_target, {
+    var sort_data = new Sortable(document.getElementById('sortable-images'), {
         swapThreshold: 1,
         animation: 150
     });
