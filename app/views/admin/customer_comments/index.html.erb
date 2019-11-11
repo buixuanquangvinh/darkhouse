@@ -2,7 +2,7 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="/admin">Dashboard</a></li>
-          <li class="breadcrumb-item active">Danh sách comment</li>
+          <li class="breadcrumb-item active">Danh sách bình luận</li>
         </ol>
     </nav>
     <a href="/admin/customer_comments/new"><i class="material-icons text-primary">add_circle</i></a>
@@ -11,7 +11,7 @@
         <thead>
           <tr>
             <th>Tên</th>
-            <th>Nhận xét</th>
+            <th>Bình luận</th>
             <th></th>
           </tr>
         </thead>
@@ -19,6 +19,7 @@
           <% @customer_comments.each do |customer_comment| %>
             <tr>
               <td><%= customer_comment.name %></td>
+              <td><%= customer_comment.quote %></td>
               <td class="text-center" style="width: 1%"><a href="/admin/customer_comments/<%= customer_comment.id %>"><i class="material-icons">edit</i></a></td>
             </tr>
           <% end %>

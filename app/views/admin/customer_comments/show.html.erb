@@ -2,34 +2,34 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="/admin">Dashboard</a></li>
-            <li class="breadcrumb-item"><a href="/admin/categories">Danh sách comment</a></li>
-            <li class="breadcrumb-item active">Sửa comment</li>
+            <li class="breadcrumb-item"><a href="/admin/categories">Danh sách bình luận</a></li>
+            <li class="breadcrumb-item active">Sửa bình luận</li>
         </ol>
     </nav>
     <div class="row">
         <div class="col-12">
-        <h2>Sửa comment</h2>
+        <h2>Sửa bình luận</h2>
         <%= form_for([:admin,@customer_comment]) do |f| %>
             <div class="form-group">
                 <label>Tên khách hàng</label>
                 <%= f.text_field :name, class: "form-control", autofocus: true %>
             </div>
             <div class="form-group">
-                <label>Comment</label>
+                <label>Bình luận</label>
                 <%= f.text_area :quote, class: "form-control" %>
             </div>
             <div class="form-group">
                 <label>Ảnh đại diện</label>
                 <button class="btn mt-1 pl-0" type="button" id="select-image-button"><i class="material-icons">camera_alt</i></button>
                 <div id="image-preview">
-                    <img src="<%=@category.image.thumbnail %>">
+                    <img src="<%=@customer_comment.image.thumbnail %>">
                 </div>
                 <%= f.hidden_field :image_cache %>
                 <%= f.file_field :image, class: "form-control d-none", id: 'file-input' %>
             </div>
             <div class="text-right">
                 <button class="btn btn-primary" type="submit">Lưu Comment</button>
-                <%= link_to 'Xoá comment', admin_customer_comment_path(@category), class: "btn btn-danger text-white", method: :delete, data: { confirm: 'Delete this comment ?' } %>
+                <%= link_to 'Xoá bình luận', admin_customer_comment_path(@customer_comment), class: "btn btn-danger text-white", method: :delete, data: { confirm: 'Delete this comment ?' } %>
             </div>
         <% end %>
         </div>

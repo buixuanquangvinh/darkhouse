@@ -32,7 +32,7 @@
                 <label>Ảnh bìa</label>
                 <button class="btn mt-1 pl-0" type="button" id="select-image-button"><i class="material-icons">camera_alt</i></button>
                 <div id="image-preview">
-                    <img src="<%=@news.image.thumbnail %>">
+                    <img src="<%=@darkhouse_news.image.thumbnail %>">
                 </div>
                 <%= f.hidden_field :image_cache %>
                 <%= f.file_field :image, class: "form-control d-none", id: 'file-input' %>
@@ -51,7 +51,7 @@
                 <%= f.file_field :photos, multiple: true, class: "form-control d-none", id: 'photo-input', name: "photos[image][]" %>
             </div>
             <div class="d-block d-md-flex flex-wrap" id="sortable-images">
-                <% @news.photos.where(image_type: nil).order(:sort).each_with_index do |photo,index| %>
+                <% @darkhouse_news.photos.where(image_type: nil).order(:sort).each_with_index do |photo,index| %>
                     <div class="ml-1 mt-1 border border-success position-relative text-center" data-id="<%= photo.id %>">
                         <div class="position-absolute bg-success text-white rounded-circle p-1" style="top:5px;left:5px;">
                             <div class="text-center" style="width:20px;height:20px;">
@@ -108,9 +108,9 @@
         
     })
     CKEDITOR.replace( 'editor',{ 
-        filebrowserUploadUrl: '/admin/upload-image/<%=@news.id%>',
+        filebrowserUploadUrl: '/admin/upload-image/<%=@darkhouse_news.id%>',
         extraPlugins: 'uploadimage',
-        uploadUrl: '/admin/upload-image/<%=@news.id%>'
+        uploadUrl: '/admin/upload-image/<%=@darkhouse_news.id%>'
     });
     var sort_data = new Sortable(document.getElementById('sortable-images'), {
         swapThreshold: 1,

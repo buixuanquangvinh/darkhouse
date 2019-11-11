@@ -2,20 +2,20 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="/admin">Dashboard</a></li>
-            <li class="breadcrumb-item"><a href="/admin/customer_comments">Danh sách comment</a></li>
-            <li class="breadcrumb-item active">Tạo comment</li>
+            <li class="breadcrumb-item"><a href="/admin/customer_comments">Danh sách bình luận</a></li>
+            <li class="breadcrumb-item active">Tạo bình luận</li>
         </ol>
     </nav>
     <div class="row">
         <div class="col-12">
-        <h2>Comment mới</h2>
+        <h2>Bình luận mới</h2>
         <%= form_for([:admin,@customer_comment]) do |f| %>
             <div class="form-group">
                 <label>Tên khách hàng</label>
                 <%= f.text_field :name, class: "form-control", autofocus: true %>
             </div>
             <div class="form-group">
-                <label>Comment</label>
+                <label>Bình luận</label>
                 <%= f.text_area :quote, class: "form-control" %>
             </div>
             <div class="form-group">
@@ -26,7 +26,7 @@
                 <div id="image-preview"></div>
             </div>
             <div class="text-right">
-                <button class="btn btn-primary" type="submit">Tạo Comment</button>
+                <button class="btn btn-primary" type="submit">Tạo Bình luận</button>
             </div>
         <% end %>
         </div>

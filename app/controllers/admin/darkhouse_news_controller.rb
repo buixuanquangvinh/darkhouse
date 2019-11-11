@@ -14,10 +14,10 @@ class Admin::DarkhouseNewsController < AdminController
             @darkhouse_news = current_user.darkhouse_news_created.create!(darkhouse_news_params)
             if(@darkhouse_news && params[:photos])
                 params[:photos]['image'].each do |a|
-                    @photo = @news.photos.create!(:image => a)
+                    @photo = @darkhouse_news.photos.create!(:image => a)
                 end
             end
-            flash[:success] = 'Tạo bài đăng thành công'
+            flash[:success] = 'Tạo tin tức thành công'
             redirect_to action: :index
         rescue => ex
             flash[:error] = ex.message
@@ -39,7 +39,7 @@ class Admin::DarkhouseNewsController < AdminController
                     @photo = @darkhouse_news.photos.create!(:image => a)
                 end
             end
-            flash[:success] = 'Lưu bài đăng thành công'
+            flash[:success] = 'Lưu tin tức thành công'
             redirect_to action: :index
         rescue => ex
             flash[:error] = ex.message
@@ -50,7 +50,7 @@ class Admin::DarkhouseNewsController < AdminController
     def destroy
         begin
             @darkhouse_news = DarkhouseNews.find(params[:id]).destroy
-            flash[:success] = 'Xoá bài đăng thành công'
+            flash[:success] = 'Xoá tin tức thành công'
             redirect_to action: :index
         rescue => ex
             flash[:error] = ex.message
