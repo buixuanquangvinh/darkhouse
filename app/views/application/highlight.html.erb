@@ -1,0 +1,29 @@
+<header class="page-header d-flex flex-column justify-content-end">
+    <div class="container text-white rounded-top" style="background:rgba(0,0,0,0.6)">
+        <h2><i>Dark House Studio</i></h2>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb bg-transparent pb-0">
+                <li class="breadcrumb-item text-primary"><a href="/">Trang chủ</a></li>
+                <li class="breadcrumb-item active">Catalog</li>
+            </ol>
+        </nav>
+    </div>
+</header>
+<div class="container mt-2 pb-2" style="min-height:60vh">
+    <div class="row">
+    <% @categories.each do |category| %>
+        <div class="col-12 col-md-4 mt-3">
+            <a href="/catalog/<%= category.slug %>">
+                <div class="card text-white">
+                    <%= cl_image_tag(category.image, :transformation => { :width => 600, :crop => "fit" }, :class => "card-img",:style => "height:200px")  %>
+                    <div class="card-img-overlay p-2" style="top:auto;background: rgba(0,0,0,0.4)">
+                        <h3 class="card-title"><b><%= category.name %></b></h3>
+                    </div>
+                </div>
+            </a>
+        </div>
+    <% end %>
+    </div>
+</div>
+            
+            

@@ -1,0 +1,108 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ *= require animate.css
+ 
+ */
+html {
+    scroll-behavior: smooth;
+}
+
+.auth-container{
+    height: 100vh;
+    background: url("auth-form-background.jpg");
+    background-size: cover
+}
+
+.transparent-form{
+    background: rgba(0,0,0,0.5)
+}
+
+#sidebar {
+    min-width: 250px;
+    max-width: 250px;
+    height: 100vh;
+    transition: all 0.3s;
+}
+
+#sidebar.active {
+    margin-left: -250px;
+}
+
+.home-header{
+    height: 100vh;
+    background: url("header-bg.jpg");
+    background-size: cover;
+}
+.page-header{
+    height: 40vh;
+    background: url("header-bg.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.ani{
+    -webkit-animation: waves 2s infinite;
+    animation: waves 2s infinite;
+}
+
+@keyframes waves {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(1.5);
+        opacity: 0;
+    }
+}
+
+@-webkit-keyframes waves {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(1.5);
+        opacity: 0;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    #sidebar {
+       position: absolute;
+    }
+}
+
+a {
+    color: inherit !important;
+    text-decoration:none !important;
+}
+
+.card-img-top {
+    height: 200px;
+    object-fit: cover;
+    object-position: top;
+}
+
+.highlight-news-image{
+    object-fit: cover;
+    height:40vw;
+    object-position: top;
+}
+
+.home-catalog.slick-current{
+    background: #FF7518
+}
