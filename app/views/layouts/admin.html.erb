@@ -58,6 +58,16 @@
             <a class="list-group-item list-group-item-action bg-transparent text-white pl-5" href="/admin/news"><i class="fas fa-circle fa-xs mr-2"></i> Danh Sách</a>
             <a class="list-group-item list-group-item-action bg-transparent text-white pl-5" href="/admin/news/new"><i class="fas fa-circle fa-xs mr-2"></i> Tạo Mới</a>
           </div>
+          <a class="list-group-item list-group-item-action" data-toggle="collapse" href="#darkhouse_news_menu"><span><i class="far fa-newspaper fa-lg" style="width:30px;"></i></span> Quản Lý Tin Tức</a>
+          <div class="collapse bg-dark" id="darkhouse_news_menu">
+            <a class="list-group-item list-group-item-action bg-transparent text-white pl-5" href="/admin/darkhouse_news"><i class="fas fa-circle fa-xs mr-2"></i> Danh Sách</a>
+            <a class="list-group-item list-group-item-action bg-transparent text-white pl-5" href="/admin/darkhouse_news/new"><i class="fas fa-circle fa-xs mr-2"></i> Tạo Mới</a>
+          </div>
+          <a class="list-group-item list-group-item-action" data-toggle="collapse" href="#customer_comments_menu"><span><i class="far fa-comments fa-lg" style="width:30px;"></i></span> Quản Lý Bình Luận</a>
+          <div class="collapse bg-dark" id="customer_comments_menu">
+            <a class="list-group-item list-group-item-action bg-transparent text-white pl-5" href="/admin/customer_comments"><i class="fas fa-circle fa-xs mr-2"></i> Danh Sách</a>
+            <a class="list-group-item list-group-item-action bg-transparent text-white pl-5" href="/admin/customer_comments/new"><i class="fas fa-circle fa-xs mr-2"></i> Tạo Mới</a>
+          </div>
           <a class="list-group-item list-group-item-action" data-toggle="collapse" href="#users_menu"><span><i class="fas fa-users fa-lg" style="width:30px;"></i></span> Quản Lý Người Dùng</a>
           <div class="collapse bg-dark" id="users_menu">
             <a class="list-group-item list-group-item-action bg-transparent text-white pl-5" href="/admin/users"><i class="fas fa-circle fa-xs mr-2"></i> Danh Sách</a>
@@ -117,7 +127,7 @@
       if (window.innerWidth <= 600) 
         $("#sidebar").addClass('active');
 
-      var menu = ['categories_menu','news_menu','users_menu']
+      var menu = ['categories_menu','news_menu','darkhouse_news_menu','users_menu','customer_comments_menu']
       $('#sidebar-content').children().each((i,el)=>{
         if(window.location.href == el.href){
           el.classList.add('active')

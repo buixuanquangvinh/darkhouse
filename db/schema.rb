@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_08_035933) do
+ActiveRecord::Schema.define(version: 2019_11_11_075449) do
 
   create_table "abouts", force: :cascade do |t|
     t.string "content"
@@ -37,6 +37,30 @@ ActiveRecord::Schema.define(version: 2019_11_08_035933) do
     t.boolean "active"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "customer_comments", force: :cascade do |t|
+    t.string "name"
+    t.string "quote"
+    t.string "image"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "darkhouse_news", force: :cascade do |t|
+    t.string "title"
+    t.string "slug"
+    t.string "image"
+    t.string "sort_content"
+    t.string "content"
+    t.boolean "active"
+    t.boolean "highlight"
+    t.integer "create_by_id"
+    t.integer "updated_by_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["create_by_id"], name: "index_darkhouse_news_on_create_by_id"
+    t.index ["updated_by_id"], name: "index_darkhouse_news_on_updated_by_id"
   end
 
   create_table "news", force: :cascade do |t|
@@ -66,6 +90,7 @@ ActiveRecord::Schema.define(version: 2019_11_08_035933) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "sort"
     t.integer "image_type"
+    t.integer "darkhouse_news_id"
     t.index ["news_id"], name: "index_photos_on_news_id"
   end
 

@@ -1,0 +1,39 @@
+<div class="container-fluid">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/admin">Dashboard</a></li>
+        <li class="breadcrumb-item active">Danh sách tin tức</li>
+      </ol>
+    </nav>
+    <a href="/admin/darkhouse_news/new"><i class="material-icons text-primary">add_circle</i></a>
+    <div class="table-responsive">
+      <table class="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <th>Tiêu đề</th>
+            <th>Đăng bởi</th>
+            <th>Cập nhật bởi</th>
+            <th>Trạng thái</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+        <% @darkhouse_news.each do |news| %>
+          <tr>
+            <!--<td><%= cl_image_tag(news.image.thumbnail) %></td>-->
+            <td><%= news.title %></td>
+            <td><%= news.created_by_user.email %></td>
+            <td><%= news.updated_by_user ? news.updated_by_user.email : '' %></td>
+            <td><%= news.active ? 'Active':'Inactive' %></td>
+            <td class="text-center" style="width: 1%">
+              <div class="d-flex">
+                <a href="/admin/news/<%= news.id %>"><i class="material-icons">edit</i></a>
+                <a class="ml-2" target="_blank" rel="noopener noreferrer" href="/project/<%= news.slug %>"><i class="fas fa-eye"></i></a>
+              </div>
+            </td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+</div>

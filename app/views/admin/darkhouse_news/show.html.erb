@@ -1,0 +1,125 @@
+<div class="container-fluid">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/admin">Dashboard</a></li>
+            <li class="breadcrumb-item"><a href="/admin/news">Danh sách bài đăng</a></li>
+            <li class="breadcrumb-item active">Sửa bài đăng</li>
+        </ol>
+    </nav>
+    <div class="row">
+        <div class="col-12">
+        <h2>Sửa bài đăng</h2>
+        <%= form_for([:admin,@darkhouse_news],:html => { :onsubmit => "updateSort(event)" }) do |f| %>
+            <div class="form-group">
+                <label>Tiêu đề</label>
+                <%= f.text_field :title, class: "form-control", autofocus: true %>
+            </div>
+            <div class="form-group form-inline">
+                <label>Trạng thái</label>
+                <div class="custom-control custom-switch ml-5">
+                    <%= f.check_box :active, class: "custom-control-input", id: 'activeSwitch'  %>
+                    <label class="custom-control-label" for="activeSwitch"></label>
+                </div>
+            </div>
+            <div class="form-group form-inline">
+                <label>Hiển thị trên trang chủ</label>
+                <div class="custom-control custom-switch ml-5">
+                    <%= f.check_box :highlight, class: "custom-control-input", id: 'highlightSwitch'  %>
+                    <label class="custom-control-label" for="highlightSwitch"></label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Ảnh bìa</label>
+                <button class="btn mt-1 pl-0" type="button" id="select-image-button"><i class="material-icons">camera_alt</i></button>
+                <div id="image-preview">
+                    <img src="<%=@news.image.thumbnail %>">
+                </div>
+                <%= f.hidden_field :image_cache %>
+                <%= f.file_field :image, class: "form-control d-none", id: 'file-input' %>
+            </div>
+            <div class="form-group">
+                <label>Tóm tắt</label>
+                <%= f.text_area :sort_content, class: "form-control" %>
+            </div>
+            <div class="form-group">
+                <label>Nội dung</label>
+                <%= f.text_area :content, class: "form-control", id: 'editor'  %>
+            </div>
+            <div class="form-group">
+                <label>Thư viện ảnh</label>
+                <button class="btn mt-1 pl-0" type="button" id="select-photo-button"><i class="material-icons">camera_alt</i></button>   
+                <%= f.file_field :photos, multiple: true, class: "form-control d-none", id: 'photo-input', name: "photos[image][]" %>
+            </div>
+            <div class="d-block d-md-flex flex-wrap" id="sortable-images">
+                <% @news.photos.where(image_type: nil).order(:sort).each_with_index do |photo,index| %>
+                    <div class="ml-1 mt-1 border border-success position-relative text-center" data-id="<%= photo.id %>">
+                        <div class="position-absolute bg-success text-white rounded-circle p-1" style="top:5px;left:5px;">
+                            <div class="text-center" style="width:20px;height:20px;">
+                                <%= photo.sort %>
+                            </div>
+                        </div>
+                        <img style="height:100px;width:auto" src="<%=photo.image.thumbnail %>"/>
+                        <a class="position-absolute text-danger" style="top:5px;right:5px" href="/admin/photos/<%= photo.id %>" data-method="delete" data-confirm="Are you sure?">
+                            <i class="material-icons">clear</i>
+                        </a>
+                    </div>
+                <% end %>
+            </div>
+            <div id="photo-preview"></div>
+            <div class="text-right mt-2">
+                <button class="btn btn-primary" type="submit">Lưu Bài Đăng</button>
+                <%= link_to 'Xoá tin tức', admin_darkhouse_news_path(@darkhouse_news), class: "btn btn-danger text-white", method: :delete, data: { confirm: 'Delete this news ?' } %>
+            </div>
+        <% end %>
+        </div>
+    </div>
+</div>
+<script>
+    $('#select-image-button').on('click',()=>{
+        $('#file-input').click()
+    })
+    $('#file-input').on('change',(e)=>{
+        $('#image-preview').empty()
+        let reader = new FileReader();
+        reader.readAsDataURL(e.target.files[0]);
+        reader.onload = function () {
+            $('#image-preview').append('<img class="ml-1 mt-1" style="height:100px;width:auto" src="'+reader.result+'"/>')
+        };
+        reader.onerror = function (error) {
+            console.log('Error: ', error);
+        };
+    })
+    $('#select-photo-button').on('click',()=>{
+        $('#photo-input').click()
+    })
+    $('#photo-input').on('change',(e)=>{
+        $('#photo-preview').empty()
+        let files = e.target.files
+        for(let i =0; i<files.length;i++){
+            let reader = new FileReader();
+            reader.readAsDataURL(files[i]);
+            reader.onload = function () {
+                $('#photo-preview').append('<img class="ml-1 mt-1 border border-danger" style="height:100px;width:auto" src="'+reader.result+'"/>')
+            };
+            reader.onerror = function (error) {
+                console.log('Error: ', error);
+            };
+        }
+        
+    })
+    CKEDITOR.replace( 'editor',{ 
+        filebrowserUploadUrl: '/admin/upload-image/<%=@news.id%>',
+        extraPlugins: 'uploadimage',
+        uploadUrl: '/admin/upload-image/<%=@news.id%>'
+    });
+    var sort_data = new Sortable(document.getElementById('sortable-images'), {
+        swapThreshold: 1,
+        animation: 150
+    });
+    function updateSort(e){
+        jQuery.ajax('/admin/sort-image',{ method:"POST", data:{ ids:sort_data.toArray() }}).then((res)=>{
+            console.log(res)
+        })
+    }
+</script>
+        
