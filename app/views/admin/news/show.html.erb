@@ -54,9 +54,9 @@
                 <button class="btn mt-1 pl-0" type="button" id="select-photo-button"><i class="material-icons">camera_alt</i></button>   
                 <%= f.file_field :photos, multiple: true, class: "form-control d-none", id: 'photo-input', name: "photos[image][]" %>
             </div>
-            <div class="d-flex flex-wrap" id="sortable-images">
+            <div class="d-block d-md-flex flex-wrap" id="sortable-images">
                 <% @news.photos.where(image_type: nil).order(:sort).each_with_index do |photo,index| %>
-                    <div class="ml-1 mt-1 border border-success position-relative" data-id="<%= photo.id %>">
+                    <div class="ml-1 mt-1 border border-success position-relative text-center" data-id="<%= photo.id %>">
                         <div class="position-absolute bg-success text-white rounded-circle p-1" style="top:5px;left:5px;">
                             <div class="text-center" style="width:20px;height:20px;">
                                 <%= photo.sort %>
