@@ -8,14 +8,13 @@ class ApplicationController < ActionController::Base
 
     def contact
         @appointment = Appointment.new
-    end
-    
-    def contact_create
-        begin
-            Appointment.create!(appointment_params)
-            flash[:success] = 'Tạo thành công'
-        rescue =>ex
-            flash[:error] = ex.message
+        if request.post?
+            begin
+                Appointment.create!(appointment_params)
+                flash[:success] = 'Tạo thành công'
+            rescue =>ex
+                flash[:error] = ex.message
+            end
         end
     end
 

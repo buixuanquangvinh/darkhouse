@@ -1,0 +1,34 @@
+<div class="container-fluid">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/admin">Dashboard</a></li>
+            <li class="breadcrumb-item active">Danh sách liên hệ</li>
+        </ol>
+    </nav>
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Tên</th>
+                <th>Số điện thoại</th>
+                <th>Email</th>
+                <th>Nhận ngày</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @appointments.each do |appointment| %>
+            <tr>
+                <td><%= appointment.customer_name %></td>
+                <td><%= appointment.customer_phone %></td>
+                <td><%= appointment.customer_email %></td>
+                <td><%= appointment.created_at.strftime("%d/%m/%Y %H:%M") %></td>
+                <td class="text-center" style="width: 1%"><a href="/admin/appointments/<%= appointment.id %>"><i class="material-icons">edit</i></a></td>
+            </tr>
+            <% end %>
+        </tbody>
+        </table>
+        <%= paginate @appointments %>
+    </div>
+</div>
+      

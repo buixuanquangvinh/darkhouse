@@ -10,6 +10,18 @@
     </div>
 </header>
 <div class="container mt-2 pb-2" style="min-height:60vh">
+    <% if flash[:success] %>
+    <div class="alert alert-success alert-dismissible">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <%= flash[:success] %>
+    </div>
+    <% end %>
+    <% if flash[:error] %>
+    <div class="alert alert-danger alert-dismissible">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <%= flash[:error] %>
+    </div>
+    <% end %>
     <div class="row mt-3">
         <div class="col-12 col-md-6">
             <div class="border border-warning rounded pr-0 pr-md-5 p-5">
@@ -36,7 +48,7 @@
             <% end %>
             </div>
         </div>
-        <div class="col-10 col-md-6 p-5 d-none d-md-block" style="margin-left:-100px;">
+        <div class="col-10 col-md-6 pl-0 pt-5 pb-5 pr-5 d-none d-md-block" style="margin-left:-50px;">
             <div class="bg-dark text-white border border-warning rounded p-3 h-100">
                 <h5 class="text-warning"><b>VP CHÍNH TẠI VIỆT NAM</b></h5>
                 <p><i class="fas fa-map-marker-alt mr-2 text-warning"></i> 03.28 Boutique House | Vinhome Imperia | Hải Phòng</p>

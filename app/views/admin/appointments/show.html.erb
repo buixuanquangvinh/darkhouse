@@ -1,0 +1,20 @@
+<div class="container-fluid">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/admin">Dashboard</a></li>
+            <li class="breadcrumb-item"><a href="/admin/appointments">Danh sách liên hệ</a></li>
+            <li class="breadcrumb-item active">Chi tiết liên hệ</li>
+        </ol>
+    </nav>
+    <div class="row">
+        <div class="col-12">
+            <p><b>Tên khách hàng : </b> <%= @appointment.customer_name %></p>
+            <p><b>Số điện thoại : </b> <%= @appointment.customer_phone%></p>
+            <p><b>Email : </b> <%= @appointment.customer_email%></p>
+            <p><b>Gửi ngày : </b> <%= @appointment.created_at.strftime("%d/%m/%Y %H:%M") %></p>
+            <p><b>Nội dung : </b></p>
+            <p><%= @appointment.description%></p>
+        </div>
+    </div>
+</div>
+                

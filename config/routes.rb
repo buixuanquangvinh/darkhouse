@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   root 'application#home'
   get '/lien-he', to: 'application#contact'
-  post '/lien-he', to: 'application#contact_create'
+  post '/lien-he', to: 'application#contact'
   get '/ve-cong-ty', to: 'application#about'
   get '/tuyen-dung', to: 'application#recruitment'
   get '/du-an', to:'application#highlight'
