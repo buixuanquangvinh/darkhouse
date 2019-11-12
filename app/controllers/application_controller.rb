@@ -28,7 +28,7 @@ class ApplicationController < ActionController::Base
     
     def catalog
         @category = Category.find_by_slug(params[:slug])
-        @news = @category.news.where(active:true)
+        @news = @category.news.where(active:true).page params[:page]
     end
     
     def project
@@ -36,7 +36,7 @@ class ApplicationController < ActionController::Base
     end
 
     def darkhouse_news
-        @darkhouse_news = DarkhouseNews.all
+        @darkhouse_news = DarkhouseNews.page params[:page]
     end
 
     def darkhouse_news_detail
