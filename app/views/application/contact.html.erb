@@ -10,8 +10,43 @@
     </div>
 </header>
 <div class="container mt-2 pb-2" style="min-height:60vh">
-    
-    
+    <div class="row mt-3">
+        <div class="col-12 col-md-6">
+            <div class="border border-warning rounded pr-0 pr-md-5 p-5">
+            <%= form_for(@appointment,url: "/lien-he") do |f| %>
+                <div class="form-group">
+                    <label>Họ và tên</label>
+                    <%= f.text_field :customer_name, class: "form-control" %>
+                </div>
+                <div class="form-group">
+                    <label>Số điện thoại</label>
+                    <%= f.text_field :customer_phone, class: "form-control" %>
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <%= f.text_field :customer_email, class: "form-control" %>
+                </div>
+                <div class="form-group">
+                    <label>Nội dung</label>
+                    <%= f.text_area :description, class: "form-control" %>
+                </div>
+                <div class="text-right">
+                    <button class="btn btn-primary" type="submit">Gửi</button>
+                </div>
+            <% end %>
+            </div>
+        </div>
+        <div class="col-10 col-md-6 p-5 d-none d-md-block" style="margin-left:-100px;">
+            <div class="bg-dark text-white border border-warning rounded p-3 h-100">
+                <h5 class="text-warning"><b>VP CHÍNH TẠI VIỆT NAM</b></h5>
+                <p><i class="fas fa-map-marker-alt mr-2 text-warning"></i> 03.28 Boutique House | Vinhome Imperia | Hải Phòng</p>
+                <p><i class="fas fa-phone mr-2 text-warning"></i> 0936.777.373</p>
+                <p><i class="fas fa-envelope mr-2 text-warning"></i> darkhouseinterior@gmail.com</p>
+                <a href="https://www.facebook.com/thietkenoithatdarkhouse/"><p><span><i class="fab fa-facebook-square text-primary"></i></span> Facebook</p></a>
+            </div>
+        </div>
+    </div>
 </div>
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3728.22233361147!2d106.66007235668772!3d20.86308691896512!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x314a7bb3c4bc5529%3A0x3298de2609edf430!2sVinhomes%20Imperia%20H%E1%BA%A3i%20Ph%C3%B2ng!5e0!3m2!1svi!2s!4v1573552185066!5m2!1svi!2s" height="450" frameborder="0" style="border:0;width:100%" allowfullscreen=""></iframe>
     
     

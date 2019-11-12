@@ -7,8 +7,18 @@ class ApplicationController < ActionController::Base
     end
 
     def contact
+        @appointment = Appointment.new
     end
     
+    def contact_create
+        begin
+            Appointment.create!(appointment_params)
+            flash[:success] = 'Tạo thành công'
+        rescue =>ex
+            flash[:error] = ex.message
+        end
+    end
+
     def about
         @about = About.first
         if(!@about)
@@ -45,6 +55,10 @@ class ApplicationController < ActionController::Base
 
     def set_constants
         @categories = Category.where(active:true)
+    end
+
+    def appointment_params
+        params.require(:appointment).permit(:customer_name,:customer_phone,:customer_email,:description)
     end
 
 end
