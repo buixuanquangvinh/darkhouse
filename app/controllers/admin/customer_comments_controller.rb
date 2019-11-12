@@ -1,6 +1,6 @@
 class Admin::CustomerCommentsController < AdminController
     def index
-        @customer_comments = CustomerComment.all
+        @customer_comments = CustomerComment.page params[:page]
     end
 
     def new

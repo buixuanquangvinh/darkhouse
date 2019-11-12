@@ -1,7 +1,7 @@
 class Admin::DarkhouseNewsController < AdminController
     
     def index
-        @darkhouse_news = DarkhouseNews.all
+        @darkhouse_news = DarkhouseNews.page params[:page]
     end
 
     def new

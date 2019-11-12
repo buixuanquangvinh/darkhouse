@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
 
     def home
         @customer_comments = CustomerComment.limit(5)
+        @darkhouse_news = DarkhouseNews.limit(6)
     end
 
     def contact
@@ -32,6 +33,14 @@ class ApplicationController < ActionController::Base
     
     def project
         @news = News.find_by_slug(params[:slug])
+    end
+
+    def darkhouse_news
+        @darkhouse_news = DarkhouseNews.all
+    end
+
+    def darkhouse_news_detail
+        @darkhouse_news = DarkhouseNews.find_by_slug(params[:slug])
     end
 
     def set_constants

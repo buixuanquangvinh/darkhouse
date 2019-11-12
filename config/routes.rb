@@ -7,7 +7,9 @@ Rails.application.routes.draw do
   get '/du-an', to:'application#highlight'
   get '/catalog/:slug', to:'application#catalog'
   get '/project/:slug', to:'application#project'
-  
+
+  get '/tin-tuc', to:'application#darkhouse_news'
+  get '/tin-tuc/:slug', to:'application#darkhouse_news_detail'
 
   namespace :admin do
     root to: "dashboard#index"

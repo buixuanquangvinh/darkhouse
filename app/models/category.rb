@@ -1,4 +1,5 @@
 class Category < ApplicationRecord
+    paginates_per 10
     validates :name,:image, presence: {message: "phải điền"}
     mount_uploader :image, MediaUploader
     has_many :news, :dependent => :destroy

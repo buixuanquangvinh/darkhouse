@@ -38,26 +38,48 @@
     <% end %>
   </div>
 </div>
-<div class="multiple-comment w-100">
-  <% @customer_comments.each do |customer_comment| %>
-    <div class="d-flex">
-      <div class="overflow-hidden position-relative w-50" style="clip-path: polygon(0 0,0% 400%,100% 0);-webkit-clip-path:polygon(0 0,0% 400%,100% 0)">
-        <%=image_tag("white-brick-bg.jpg", :class => "w-100", :style => "height:300px") %>
-        <div class="position-absolute h-100 w-100 d-flex flex-column justify-content-center" style="top:0;left:0">
-          <div class="d-flex justify-content-center">
-            <%= cl_image_tag(customer_comment.image, :transformation => { :height => 200, :crop => "fit" }, :style => "object-fit:cover;height:200px;")  %>
+<div class="container pt-3 pb-3">
+  <h1 class="text-center"><b><span class="text-warning">TIN TỨC</span> NỔI BẬT</b></h1>
+  <div class="row">
+    <% @darkhouse_news.each do |darkhouse_news| %>
+    <div class="col-12 col-md-4">
+      <a href="tin-tuc/<%= darkhouse_news.slug %>">
+        <div class="card h-100">
+          <%= cl_image_tag(darkhouse_news.image, :transformation => { :height => 200, :crop => "fit" },:class => "card-img-top", :style => "object-fit:cover;height:200px;")  %>
+          <div class="card-body">
+            <h5 class="card-title"><b><%= darkhouse_news.title %></b></h5>
+            <p class="card-text"><%= darkhouse_news.sort_content %></p>
           </div>
         </div>
-      </div>
-      <div class="p-3 d-flex flex-column justify-content-center w-50">
-          <p><q><i><b> <%= customer_comment.quote %> </b></i></q></p>
-          <div class="text-right">
-            <p><i><b> <%= customer_comment.name %> </b></i></p>
-          </div>
-      </div>
+      </a>
     </div>
-  <% end %>
+    <% end %>
+  </div>
 </div>
+<div class="container pt-3">
+  <h1 class="text-center"><b><span class="text-warning">ĐỐI TÁC - </span> KHÁCH HÀNG</b></h1>
+  <div class="multiple-comment w-100">
+    <% @customer_comments.each do |customer_comment| %>
+      <div class="d-flex">
+        <div class="overflow-hidden position-relative w-50" style="clip-path: polygon(0 0,0% 400%,100% 0);-webkit-clip-path:polygon(0 0,0% 400%,100% 0)">
+          <%=image_tag("white-brick-bg.jpg", :class => "w-100", :style => "height:300px") %>
+          <div class="position-absolute h-100 w-100 d-flex flex-column justify-content-center" style="top:0;left:0">
+            <div class="d-flex justify-content-center">
+              <%= cl_image_tag(customer_comment.image, :transformation => { :height => 200, :crop => "fit" }, :style => "object-fit:cover;height:200px;")  %>
+            </div>
+          </div>
+        </div>
+        <div class="p-3 d-flex flex-column justify-content-center w-50">
+            <p><q><i><b> <%= customer_comment.quote %> </b></i></q></p>
+            <div class="text-right">
+              <p><i><b> <%= customer_comment.name %> </b></i></p>
+            </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
 <script>
   $('.multiple-items').slick({
     infinite: true,

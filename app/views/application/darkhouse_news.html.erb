@@ -1,0 +1,30 @@
+<header class="page-header d-flex flex-column justify-content-end">
+    <div class="container text-white rounded-top" style="background:rgba(0,0,0,0.6)">
+        <h2><i>Dark House Studio Catalog</i></h2>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb bg-transparent pb-0">
+                <li class="breadcrumb-item text-primary"><a href="/">Trang chủ</a></li>
+                <li class="breadcrumb-item active">Tin tức</li>
+            </ol>
+        </nav>
+    </div>
+</header>
+<div class="container mt-2 pb-2" style="min-height:60vh">
+    <div class="row">
+    <% @darkhouse_news.each do |darkhouse_news| %>
+        <div class="col-12 col-md-4 mt-3">
+            <a href="tin-tuc/<%= darkhouse_news.slug %>">
+            <div class="card h-100">
+                <%= cl_image_tag(darkhouse_news.image, :transformation => { :height => 200, :crop => "fit" },:class => "card-img-top", :style => "object-fit:cover;height:200px;")  %>
+                <div class="card-body">
+                <h5 class="card-title"><b><%= darkhouse_news.title %></b></h5>
+                <p class="card-text"><%= darkhouse_news.sort_content %></p>
+                </div>
+            </div>
+            </a>
+        </div>
+    <% end %>
+    </div>
+</div>
+    
+    
