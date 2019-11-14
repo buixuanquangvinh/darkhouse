@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  has_paper_trail
   paginates_per 10
   mount_uploader :avatar, MediaUploader
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable

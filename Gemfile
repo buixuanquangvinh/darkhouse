@@ -8,6 +8,7 @@ gem 'carrierwave', '~> 1.0'
 gem 'cloudinary'
 gem 'kaminari'
 gem 'react-rails'
+gem 'paper_trail'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.0'

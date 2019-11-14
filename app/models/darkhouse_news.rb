@@ -1,4 +1,5 @@
 class DarkhouseNews < ApplicationRecord
+    has_paper_trail
     paginates_per 10
     validates :title,:image, presence: {message: "phải điền"}
     mount_uploader :image, MediaUploader

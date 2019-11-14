@@ -33,6 +33,22 @@
             </div>
         <% end %>
         </div>
+        <div class="col-12 mt-3">
+            <h2>Log</h2>
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped">
+                    <tbody>
+                        <% @customer_comment.versions.map do |version| %>
+                        <tr>
+                            <td><%= version.created_at.strftime("%d/%m/%Y %H:%M") %></td>
+                            <td><%= version.event %></td>
+                            <td><%= User.find(version.whodunnit).email %></td>
+                        </tr>
+                        <% end %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 </div>
 <script>

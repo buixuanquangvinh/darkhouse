@@ -1,4 +1,5 @@
 class Category < ApplicationRecord
+    has_paper_trail
     paginates_per 10
     validates :name,:image, presence: {message: "phải điền"}
     mount_uploader :image, MediaUploader

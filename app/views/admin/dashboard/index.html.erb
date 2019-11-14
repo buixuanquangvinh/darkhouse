@@ -1,7 +1,51 @@
+<!--
 <div class="container h-75 d-flex flex-column justify-content-center">
     <div class="text-center">
         <div><span><i class="material-icons text-warning" style="font-size: 100px">warning</i></span></div>
         <h1>Coming Soon</h1>
         <%= react_component("HelloWorld", { greeting: "Hello from react-rails." }) %>
+    </div>
+</div>
+-->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12 col-md-8">
+            <div class ="row">
+                <div class="col-6 col-md-3">
+                    <div class="card text-white bg-primary mb-3">
+                        <div class="card-header text-center">BÀI ĐĂNG</div>
+                        <div class="card-body">
+                            <h3 class="card-title text-center"><b><%= News.all.count %></b></h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="card text-white bg-secondary mb-3">
+                        <div class="card-header text-center">TIN TỨC</div>
+                        <div class="card-body">
+                            <h3 class="card-title text-center"><b><%= DarkhouseNews.all.count %></b></h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-4">
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped">
+                    <tbody>
+                        <% PaperTrail::Version.all.map do |version| %>
+                        <tr>
+                            <td><%= version.created_at.strftime("%d/%m/%Y %H:%M") %></td>
+                            <td>
+                                <%= User.find(version.whodunnit).email %> 
+                                <b><%= version.event %></b> 
+                                <i><%= version.item_type %></i> 
+                            </td>
+                        </tr>
+                        <% end %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 </div>
